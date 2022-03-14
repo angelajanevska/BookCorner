@@ -32,6 +32,30 @@
       #map_canvas {
         height: 100%;
       }
+      #filter-inline{
+          display: inline-block;
+      }
+      .book-image{
+          width: 200px;
+      }
+      .popular-image{
+          width: 300px;
+          margin-right: 50px;
+      }
+      .book-item {
+          margin: 20px;
+      }
+      .popular-item{
+          margin: 20px 50px 20px 20px;
+      }
+      .book-subtitle{
+          font-size: 20px;
+          color: #888888;
+      }
+      .book-description{
+          color: #888888;
+          width: 80%;
+      }
       /* Optional: Makes the sample page fill the window. */
     </style>
     <script src="../static/plugins/modernizr.min.js"></script>
@@ -114,137 +138,143 @@
         </div>
         <!-- Container wrapper -->
     </nav>
-
-  <!-- Portfolio header-section 
-  =========================-->
-<section class="page-header services-header" data-parallax="scroll" data-image-src="../static/images/header/portfolio-folding-img.jpg">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <h1 class="text-center">Our Portfolio.<br> We Ensure Quality Design.</h1>
-      </div>
-    </div>
-  </div>
-</section>
-
+<br><br>
  <!-- Portfolio Sections 
  =========================-->
  <section class="portfolio">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <div class="title text-center">
-          <h2>Our Portfolio</h2>
-        </div>
-        <div class="protfolio-mixitup-btn text-center">
-          <button class="filter btn btn-default btn-main active" data-filter="all">all</button>
-          <button class="filter btn btn-default btn-main" data-filter="category-1">branding</button>
-          <button class="filter btn btn-default btn-main" data-filter="category-2">User interface</button>
-          <button class="filter btn btn-default btn-main" data-filter="category-3">print design</button>
-        </div>
-        <div id="Container" class="filtr-container row">
-          <div class="filtr-item col-md-4 col-sm-6 col-xs-12" data-category="category-1">
-            <div class="portfolio-list">
-              <a href="portfolio-single.html">
-                <div class="th-mouse-portfolio-card">
-                  <div class="thumbnail portfolio-thumbnail">
-                    <img src="../static/images/portfolio/portfolio-img1.jpg" alt="Portfolio">
-                    <div class="caption portfolio-caption">
-                      <p class="date">16.03.2015</p>
-                      <h3 class="portfolio-title">Merit wogmonk</h3>
-                      <p class="portfolio-subtitle">Branding</p>
-                    </div>
+          <!--Popular books-->
+          <div class="row ">
+              <!--Book gallery item-->
+              <div class="col-md-12 col-sm-6 col-xs-12 book-item">
+                  <div class="d-flex justify-content-center">
+                      <img class="popular-image" src="../static/images/portfolio/portfolio-img1.jpg" alt="Portfolio">
+                      <div class="popular-item">
+                          <a href="portfolio-single.html"><h1>Book title</h1></a>
+                          <h3><i>Most popular book at the moment..</i></h3><br><br>
+                          <p class="book-subtitle">Book author</p>
+                          <p class="book-subtitle">Book genre</p>
+                          <p class="book-description">Book description Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><br>
+                          <button class="btn btn-secondary">Learn more</button>
+                      </div>
                   </div>
-                </div>
-              </a>
-            </div>
+              </div>
           </div>
-          <div class="filtr-item col-md-4 col-sm-6 col-xs-12" data-category="category-2">
-            <div class="portfolio-list">
-              <a href="portfolio-single.html">
-                <div class="th-mouse-portfolio-card">
-                  <div class="thumbnail portfolio-thumbnail">
-                    <img src="../static/images/portfolio/portfolio-img2.jpg" alt="Portfolio">
-                    <div class="caption portfolio-caption">
-                      <p class="date">16.03.2015</p>
-                      <h3 class="portfolio-title">Merit wogmonk</h3>
-                      <p class="portfolio-subtitle">Branding</p>
-                    </div>
+          <div class="title text-center"><br>
+                  <div class="text-center"><h3><b>- Look for books -</b></h3><h3><i>A room without books is like a body without a soul.</i></h3></div>
+              </div><br><br>
+          <div class="protfolio-mixitup-btn">
+              <!--Book filter-->
+              <form id="filter" th:method="get" th:action="@{/}">
+                  <div class="filter btn btn-default btn-main">all</div>
+                  <div class="filter btn btn-default btn-main">Most popular</div>
+                  <label for="genre"></label>
+                  <select id="genre" name="genre" class="filter btn btn-default btn-main">
+                      <option value="" disabled selected hidden>Filter by genre</option>
+                      <option value="action">action</option>
+                      <option value="adventure">adventure</option>
+                      <option value="fiction">fiction</option>
+                      <option value="romance">romance</option>
+                      <option value="history">history</option>
+                      <option value="children">children's literature</option>
+                      <option value="education">education</option>
+                  </select>
+                  <label for="search-by"></label>
+                  <select id="search-by" name="search-by" class="filter btn btn-default btn-main">
+                      <option value="" disabled selected hidden>Select keyword</option>
+                      <option value="author">Author</option>
+                      <option value="isbn">ISBN</option>
+                      <option value="title">Title</option>
+                  </select>
+                  <input type="search" class="filter btn btn-default btn-main active">
+                  <button type="submit" class="filter btn btn-default btn-main active">Search</button>
+              </form>
+          </div>
+          <br>
+          <div class="row d-flex justify-content-center">
+              <!--Book gallery item-->
+              <div class="col-md-2 col-sm-6 col-xs-12 book-item">
+                  <img class="book-image" src="../static/images/portfolio/portfolio-img1.jpg" alt="Portfolio">
+                  <div>
+                      <a href="portfolio-single.html"><h3>Book title</h3></a>
+                      <p class="">Book author</p>
+                      <p class="">Book genre</p>
+                      <button class="btn btn-main">Add to wishlist</button>
                   </div>
-                </div>
-              </a>
-            </div>
-          </div>
-          <div class="filtr-item col-md-4 col-sm-6 col-xs-12" data-category="category-3">
-            <div class="portfolio-list">
-              <a href="portfolio-single.html">
-                <div class="th-mouse-portfolio-card">
-                  <div class="thumbnail portfolio-thumbnail">
-                    <img src="../static/images/portfolio/portfolio-img3.jpg" alt="Portfolio">
-                    <div class="caption portfolio-caption">
-                      <p class="date">16.03.2015</p>
-                      <h3 class="portfolio-title">Merit wogmonk</h3>
-                      <p class="portfolio-subtitle">Branding</p>
-                    </div>
+              </div>
+              <!--Book gallery item-->
+              <div class="col-md-2 col-sm-6 col-xs-12 book-item">
+                  <img class="book-image" src="../static/images/portfolio/portfolio-img1.jpg" alt="Portfolio">
+                  <div>
+                      <a href="portfolio-single.html"><h3>Book title</h3></a>
+                      <p class="">Book author</p>
+                      <p class="">Book genre</p>
+                      <button class="btn btn-main">Add to wishlist</button>
                   </div>
-                </div>
-              </a>
-            </div>
-          </div>
-          <div class="filtr-item col-md-4 col-sm-6 col-xs-12" data-category="category-1">
-            <div class="portfolio-list">
-              <a href="portfolio-single.html">
-                <div class="th-mouse-portfolio-card">
-                  <div class="thumbnail portfolio-thumbnail">
-                    <img src="../static/images/portfolio/portfolio-img4.jpg" alt="Portfolio">
-                    <div class="caption portfolio-caption">
-                      <p class="date">16.03.2015</p>
-                      <h3 class="portfolio-title">Merit wogmonk</h3>
-                      <p class="portfolio-subtitle">Branding</p>
-                    </div>
+              </div>
+              <!--Book gallery item-->
+              <div class="col-md-2 col-sm-6 col-xs-12 book-item">
+                  <img class="book-image" src="../static/images/portfolio/portfolio-img1.jpg" alt="Portfolio">
+                  <div>
+                      <a href="portfolio-single.html"><h3>Book title</h3></a>
+                      <p class="">Book author</p>
+                      <p class="">Book genre</p>
+                      <button class="btn btn-main">Add to wishlist</button>
                   </div>
-                </div>
-              </a>
-            </div>
-          </div>
-          <div class="filtr-item col-md-4 col-sm-6 col-xs-12" data-category="category-2">
-            <div class="portfolio-list">
-              <a href="portfolio-single.html">
-                <div class="th-mouse-portfolio-card">
-                  <div class="thumbnail portfolio-thumbnail">
-                    <img src="../static/images/portfolio/portfolio-img5.jpg" alt="Portfolio">
-                    <div class="caption portfolio-caption">
-                      <p class="date">16.03.2015</p>
-                      <h3 class="portfolio-title">Merit wogmonk</h3>
-                      <p class="portfolio-subtitle">Branding</p>
-                    </div>
+              </div>
+              <!--Book gallery item-->
+              <div class="col-md-2 col-sm-6 col-xs-12 book-item">
+                  <img class="book-image" src="../static/images/portfolio/portfolio-img1.jpg" alt="Portfolio">
+                  <div>
+                      <a href="portfolio-single.html"><h3>Book title</h3></a>
+                      <p class="">Book author</p>
+                      <p class="">Book genre</p>
+                      <button class="btn btn-main">Add to wishlist</button>
                   </div>
-                </div>
-              </a>
-            </div>
-          </div>
-          <div class="filtr-item col-md-4 col-sm-6 col-xs-12" data-category="category-3">
-            <div class="portfolio-list">
-              <a href="portfolio-single.html">
-                <div class="th-mouse-portfolio-card">
-                  <div class="thumbnail portfolio-thumbnail">
-                    <img src="../static/images/portfolio/portfolio-img6.jpg" alt="Portfolio">
-                    <div class="caption portfolio-caption">
-                      <p class="date">16.03.2015</p>
-                      <h3 class="portfolio-title">Merit wogmonk</h3>
-                      <p class="portfolio-subtitle">Branding</p>
-                    </div>
+              </div>
+              <!--Book gallery item-->
+              <div class="col-md-2 col-sm-6 col-xs-12 book-item">
+                  <img class="book-image" src="../static/images/portfolio/portfolio-img1.jpg" alt="Portfolio">
+                  <div>
+                      <a href="portfolio-single.html"><h3>Book title</h3></a>
+                      <p class="">Book author</p>
+                      <p class="">Book genre</p>
+                      <button class="btn btn-main">Add to wishlist</button>
                   </div>
-                </div>
-              </a>
-            </div>
+              </div>
+              <!--Book gallery item-->
+              <div class="col-md-2 col-sm-6 col-xs-12 book-item">
+                  <img class="book-image" src="../static/images/portfolio/portfolio-img1.jpg" alt="Portfolio">
+                  <div>
+                      <a href="portfolio-single.html"><h3>Book title</h3></a>
+                      <p class="">Book author</p>
+                      <p class="">Book genre</p>
+                      <button class="btn btn-main">Add to wishlist</button>
+                  </div>
+              </div>
           </div>
-        </div>
+          <br><br><div class="title"><br></div><br><br>
+          <!--Popular author-->
+          <div class="row">
+              <!--Author item-->
+              <div class="col-md-12 col-sm-6 col-xs-12 book-item">
+                  <div class="d-flex justify-content-center">
+                      <div class="popular-item">
+                          <a href="portfolio-single.html"><h1>Author name</h1></a>
+                          <h3><i>Most popular author at the moment..</i></h3><br><br>
+                          <p class="book-description">Book description Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><br>
+                          <button class="btn btn-secondary">Search books by author</button>
+                      </div>
+                      <img class="popular-image" src="../static/images/portfolio/portfolio-img1.jpg" alt="Portfolio">
+                  </div>
+              </div>
+          </div>
       </div>
     </div>
   </div>
-</section>
-
+ </section>
     <footer class="footer">
         <div class="container">
             <div class="row">
@@ -329,8 +359,8 @@
     <!-- Video -->
     <script src="../static/plugins/jquery.vide.js"></script>
     <!-- google map -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu5nZKbeK-WHQ70oqOWo-_4VmwOwKP9YQ"></script>
-    <script src="../static/plugins/google-map/gmap.js"></script>
+<!--    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu5nZKbeK-WHQ70oqOWo-_4VmwOwKP9YQ"></script>-->
+<!--    <script src="../static/plugins/google-map/gmap.js"></script>-->
 
     <script src="../static/js/script.js"></script>
     </body>
