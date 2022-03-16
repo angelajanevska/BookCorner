@@ -15,37 +15,22 @@
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
 
-
-    <!--    <link rel="stylesheet" th:href="@{/plugins/bootstrap/bootstrap.min.css}">-->
-    <!--    &lt;!&ndash; ThemeFisher Icon &ndash;&gt;-->
-    <!--    <link rel="stylesheet" th:href="@{/plugins/themefisher-fonts/themefisher-fonts.css}">-->
-    <!--    &lt;!&ndash; Light Box &ndash;&gt;-->
-    <!--    <link rel="stylesheet" th:href="@{/plugins/magnific-popup/magnific-popup.css}">-->
-    <!--    &lt;!&ndash; animation css &ndash;&gt;-->
-    <!--    <link rel="stylesheet" th:href="@{/plugins/animate/animate.css}">-->
-    <!--    &lt;!&ndash; slick slider &ndash;&gt;-->
-    <!--    <link rel="stylesheet" th:href="@{/plugins/slick/slick.css}">-->
-
-    <!--    &lt;!&ndash; Revolution Slider &ndash;&gt;-->
-    <!--    <link rel="stylesheet" th:href="@{/css/style.css}">-->
-
-    <!--    <script th:src="@{/plugins/modernizr.min.js}"></script>-->
-
-    <link rel="apple-touch-icon" href="../static/apple-touch-icon.png">
-    <!-- Place favicon.ico in the root directory -->
-
-    <link rel="stylesheet" href="../static/plugins/bootstrap/bootstrap.min.css">
+    <link rel="apple-touch-icon" th:href="@{/apple-touch-icon.png}">
+    <link rel="stylesheet" th:href="@{/plugins/bootstrap/bootstrap.min.css}">
     <!-- ThemeFisher Icon -->
-    <link rel="stylesheet" href="../static/plugins/themefisher-fonts/themefisher-fonts.css">
+    <link rel="stylesheet" th:href="@{/plugins/themefisher-fonts/themefisher-fonts.css}">
     <!-- Light Box -->
-    <link rel="stylesheet" href="../static/plugins/magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" th:href="@{/plugins/magnific-popup/magnific-popup.css}">
     <!-- animation css -->
-    <link rel="stylesheet" href="../static/plugins/animate/animate.css">
+    <link rel="stylesheet" th:href="@{/plugins/animate/animate.css}">
     <!-- slick slider -->
-    <link rel="stylesheet" href="../static/plugins/slick/slick.css">
+    <link rel="stylesheet" th:href="@{/plugins/slick/slick.css}">
+
+    <script th:src="@{/plugins/modernizr.min.js}"></script>
 
     <!-- Revolution Slider -->
-    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
 
     <style>
         .card-container {
@@ -84,17 +69,27 @@
             border-color: #0257d5;
             box-shadow: none
         }
-        .about-us{
+
+        .about-us {
             background-color: #181717 !important;
         }
-        .books-cards{
+
+        .books-cards {
             background-color: #0f0f0f !important;
         }
-        .stats{
+
+        .stats {
             background-color: #181717 !important;
         }
+
+        .card-description .card-title {
+            color: #111111;
+        }
+
+        header {
+            background-image: url("/static/images/bookshelf.jpg");
+        }
     </style>
-    <script src="../static/plugins/modernizr.min.js"></script>
 </head>
 <body>
 <div class="loading">
@@ -130,32 +125,32 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand logo" href="index.html">
-                <img src="../static/images/logo-yellow.png" alt="">
+                <img th:src="@{/images/logo-yellow.png}" alt="">
             </a>
         </div>
 
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav navbar-right menu">
                 <li class="nav-item">
-                    <a href="index.html">Home</a>
+                    <a th:href="@{/}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="services.html">Service</a>
+                    <a th:href="@{/services}">Service</a>
                 </li>
                 <li class="nav-item">
-                    <a href="portfolio.html">Portfolio</a>
+                    <a th:href="@{/portfolio}">Portfolio</a>
                 </li>
                 <li class="nav-item">
-                    <a href="blog.html">Blog</a>
+                    <a th:href="@{/blog}">Blog</a>
                 </li>
                 <li class="nav-item">
-                    <a href="contact.html">Contact</a>
+                    <a th:href="@{/contact}">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a href="">Log in</a>
+                    <a th:href="@{/login}">Log in</a>
                 </li>
                 <li class="nav-item">
-                    <a href="">Register</a>
+                    <a th:href="@{/register}">Register</a>
                 </li>
             </ul>
             <!-- Left links -->
@@ -168,19 +163,17 @@
 
 <!-- Hero Area -section
  =========================-->
-<header class="hero-area th-fullpage" data-parallax="scroll" data-image-src="../static/images/bookshelf.jpg">
+<header class="hero-area th-fullpage" data-parallax="scroll">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <h1>We’re Creative <br>
                     We Ensure Quality Design</h1>
                 <br>
-                <a href="" type="button" class="btn" style="color: #facd8a; font-size: 18px">Log in</a>
             </div>
         </div>
     </div>
 </header>
-
 
 
 <section class="case-study">
@@ -224,9 +217,11 @@
                             <div class="inner-card"><img src="https://i.imgur.com/4qXhMAM.jpg"
                                                          class="img-fluid rounded">
                                 <div class="d-flex justify-content-between align-items-center mt-3 px-2">
-                                    <h4>Worksheet chair </h4> <span class="heart"><i class="fa fa-heart"></i></span>
+                                    <h4 class="card-title">Worksheet chair </h4> <span class="heart"><i
+                                        class="fa fa-heart"></i></span>
                                 </div>
-                                <div class="mt-2 px-2"><small>Sed ut perspiciatis unde omnis iste natus error sit
+                                <div class="mt-2 px-2 card-description"><small>Sed ut perspiciatis unde omnis iste natus
+                                    error sit
                                     voluptatem accusantium doloremque laudantium</small></div>
                                 <div class="px-2">
                                     <h3>$500</h3>
@@ -248,8 +243,9 @@
 
 <!-- Statistics Sections
 =========================-->
-<section class="clients stats" style="background-color: #0f0f0f" data-parallax="scroll" data-image-src="images/slider/bg-3.jpg">
-    <div class="section" >
+<section class="clients stats" style="background-color: #0f0f0f" data-parallax="scroll"
+         data-image-src="images/slider/bg-3.jpg">
+    <div class="section">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
@@ -263,7 +259,7 @@
                             <div class="table-price border-effect">
                                 <h4 class="pricing-title">Books read this month</h4>
                                 <h2 class="price">389</h2>
-<!--                                <p class="table-month">/ Month</p>-->
+                                <!--                                <p class="table-month">/ Month</p>-->
                             </div>
                         </div>
                     </div>
@@ -272,9 +268,9 @@
                             <!-- pricing table
                             ===================== -->
                             <div class="table-price border-effect">
-                                <h4 class="pricing-title" >Profiles</h4>
+                                <h4 class="pricing-title">Profiles</h4>
                                 <h2 class="price">100</h2>
-<!--                                <p class="table-month">/ Month</p>-->
+                                <!--                                <p class="table-month">/ Month</p>-->
                             </div>
                         </div>
                     </div>
@@ -285,7 +281,7 @@
                             <div class="table-price border-effect">
                                 <h4 class="pricing-title">Premium Version</h4>
                                 <h2 class="price">300.00</h2>
-<!--                                <p class="table-month">/ Month</p>-->
+                                <!--                                <p class="table-month">/ Month</p>-->
                             </div>
                         </div>
                     </div>
@@ -367,40 +363,22 @@
     </div>
 </footer>
 
-<script src="../static/plugins/jquery.min.js"></script>
 
-<script src="../static/plugins/bootstrap/bootstrap.min.js"></script>
+<script th:src="@{/plugins/jquery.min.js}"></script>
+
+<script th:src="@{/plugins/bootstrap/bootstrap.min.js}"></script>
 <!-- slick slider -->
-<script src="../static/plugins/slick/slick.min.js"></script>
+<script th:src="@{/plugins/slick/slick.min.js}"></script>
 <!-- filter -->
-<script src="../static/plugins/filterizr/jquery.filterizr.min.js"></script>
+<script th:src="@{/plugins/filterizr/jquery.filterizr.min.js}"></script>
 <!-- Lightbox -->
-<script src="../static/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script th:src="@{/plugins/magnific-popup/jquery.magnific-popup.min.js}"></script>
 <!-- Parallax -->
-<script src="../static/plugins/parallax.min.js"></script>
+<script th:src="@{/plugins/parallax.min.js}"></script>
 <!-- Video -->
-<script src="../static/plugins/jquery.vide.js"></script>
-<!-- google map -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu5nZKbeK-WHQ70oqOWo-_4VmwOwKP9YQ"></script>
-<script src="../static/plugins/google-map/gmap.js"></script>
+<script th:src="@{/plugins/jquery.vide.js}"></script>
 
-<script src="../static/js/script.js"></script>
-
-<!--  <script th:src="@{/plugins/jquery.min.js}"></script>-->
-
-<!--  <script th:src="@{/plugins/bootstrap/bootstrap.min.js}"></script>-->
-<!--  &lt;!&ndash; slick slider &ndash;&gt;-->
-<!--  <script th:src="@{/plugins/slick/slick.min.js}"></script>-->
-<!--  &lt;!&ndash; filter &ndash;&gt;-->
-<!--  <script th:src="@{/plugins/filterizr/jquery.filterizr.min.js}"></script>-->
-<!--  &lt;!&ndash; Lightbox &ndash;&gt;-->
-<!--  <script th:src="@{/plugins/magnific-popup/jquery.magnific-popup.min.js}"></script>-->
-<!--  &lt;!&ndash; Parallax &ndash;&gt;-->
-<!--  <script th:src="@{/plugins/parallax.min.js}"></script>-->
-<!--  &lt;!&ndash; Video &ndash;&gt;-->
-<!--  <script th:src="@{/plugins/jquery.vide.js}"></script>-->
-
-<!--  <script th:src="@{/js/script.js}"></script>-->
+<script th:src="@{/js/script.js}"></script>
 
 </body>
 

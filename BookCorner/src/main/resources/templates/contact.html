@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="zxx">
+<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -15,28 +15,29 @@
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
 
-    <link rel="apple-touch-icon" href="../static/apple-touch-icon.png">
-    <!-- Place favicon.ico in the root directory -->
-
-    <link rel="stylesheet" href="../static/plugins/bootstrap/bootstrap.min.css">
+    <link rel="apple-touch-icon" th:href="@{/apple-touch-icon.png}">
+    <link rel="stylesheet" th:href="@{/plugins/bootstrap/bootstrap.min.css}">
     <!-- ThemeFisher Icon -->
-    <link rel="stylesheet" href="../static/plugins/themefisher-fonts/themefisher-fonts.css">
+    <link rel="stylesheet" th:href="@{/plugins/themefisher-fonts/themefisher-fonts.css}">
     <!-- Light Box -->
-    <link rel="stylesheet" href="../static/plugins/magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" th:href="@{/plugins/magnific-popup/magnific-popup.css}">
     <!-- animation css -->
-    <link rel="stylesheet" href="../static/plugins/animate/animate.css">
+    <link rel="stylesheet" th:href="@{/plugins/animate/animate.css}">
     <!-- slick slider -->
-    <link rel="stylesheet" href="../static/plugins/slick/slick.css">
+    <link rel="stylesheet" th:href="@{/plugins/slick/slick.css}">
 
     <!-- Revolution Slider -->
-    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+    <script th:src="@{/plugins/modernizr.min.js}"></script>
+
 
     <style>
         .send-mail{
             border-left: 1px solid #8a6d3b;
         }
     </style>
-    <script src="../static/plugins/modernizr.min.js"></script>
+
 </head>
 <body>
 <div class="loading">
@@ -82,25 +83,25 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav navbar-right menu">
                 <li class="nav-item">
-                    <a href="index.html">Home</a>
+                    <a th:href="@{/}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="services.html">Service</a>
+                    <a th:href="@{/services}">Service</a>
                 </li>
                 <li class="nav-item">
-                    <a href="portfolio.html">Portfolio</a>
+                    <a th:href="@{/portfolio}">Portfolio</a>
                 </li>
                 <li class="nav-item">
-                    <a href="blog.html">Blog</a>
+                    <a th:href="@{/blog}">Blog</a>
                 </li>
                 <li class="nav-item">
-                    <a href="contact.html">Contact</a>
+                    <a th:href="@{/contact}">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a href="">Log in</a>
+                    <a th:href="@{/login}">Log in</a>
                 </li>
                 <li class="nav-item">
-                    <a href="">Register</a>
+                    <a th:href="@{/register}">Register</a>
                 </li>
             </ul>
             <!-- Left links -->
@@ -266,23 +267,22 @@
     </div>
 </footer>
 
-<script src="../static/plugins/jquery.min.js"></script>
-<script src="../static/plugins/bootstrap/bootstrap.min.js"></script>
-<!-- slick slider -->
-<script src="../static/plugins/slick/slick.min.js"></script>
-<!-- filter -->
-<script src="../static/plugins/filterizr/jquery.filterizr.min.js"></script>
-<!-- Lightbox -->
-<script src="../static/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
-<!-- Parallax -->
-<script src="../static/plugins/parallax.min.js"></script>
-<!-- Video -->
-<script src="../static/plugins/jquery.vide.js"></script>
-<!-- google map -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu5nZKbeK-WHQ70oqOWo-_4VmwOwKP9YQ"></script>
-<script src="../static/plugins/google-map/gmap.js"></script>
+<script th:src="@{/plugins/jquery.min.js}"></script>
 
-<script src="../static/js/script.js"></script>
+<script th:src="@{/plugins/bootstrap/bootstrap.min.js}"></script>
+<!-- slick slider -->
+<script th:src="@{/plugins/slick/slick.min.js}"></script>
+<!-- filter -->
+<script th:src="@{/plugins/filterizr/jquery.filterizr.min.js}"></script>
+<!-- Lightbox -->
+<script th:src="@{/plugins/magnific-popup/jquery.magnific-popup.min.js}"></script>
+<!-- Parallax -->
+<script th:src="@{/plugins/parallax.min.js}"></script>
+<!-- Video -->
+<script th:src="@{/plugins/jquery.vide.js}"></script>
+
+<script th:src="@{/js/script.js}"></script>
+
 </body>
 
 </html>
