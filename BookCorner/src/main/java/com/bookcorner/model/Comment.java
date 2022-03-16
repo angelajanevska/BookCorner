@@ -15,4 +15,8 @@ public class Comment {
     private User user_id;
 
     private String text;
+
+
+    public Comment() {
+    }
 }

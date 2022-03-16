@@ -16,4 +16,14 @@ public class Book {
     private String author;
     private LocalDate release_date;
     private Integer pages;
+
+    public Book(String title, String author, LocalDate release_date, Integer pages) {
+        this.title = title;
+        this.author = author;
+        this.release_date = release_date;
+        this.pages = pages;
+    }
+
+    public Book() {
+    }
 }

@@ -12,11 +12,8 @@ public class Currently_reading {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    private User user_id;
-
-    @ManyToOne
-    private Book book_id;
+    @ManyToMany
+    private List<Book> books;
 
     private Integer current_page;
 
@@ -24,4 +21,9 @@ public class Currently_reading {
 
     @OneToMany
     private List<Quotes> favorite_quotes;
+
+
+    public Currently_reading() {
+
+    }
 }

@@ -21,4 +21,6 @@ public class Reviews {
 
     private Integer rating;
 
+    public Reviews() {
+    }
 }

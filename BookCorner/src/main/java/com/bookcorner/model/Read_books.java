@@ -12,14 +12,16 @@ public class Read_books {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    private User user_id;
-
-    @ManyToOne
-    private Book book_id;
+    @ManyToMany
+    private List<Book> books;
 
     private String personal_comment;
 
     @OneToMany
     private List<Quotes> favorite_quotes;
+
+
+    public Read_books() {
+    }
 }
+

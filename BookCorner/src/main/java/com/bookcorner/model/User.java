@@ -8,6 +8,7 @@ import java.util.List;
 
 @Data
 @Entity
+@Table(name = "Users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,12 +20,28 @@ public class User {
     private String sex;
     private LocalDate birthday;
 
-    @OneToMany
-    private List<Wishlist> wishlist;
+    @OneToOne
+    private Wishlist wishlist;
 
-    @OneToMany
-    private List<Currently_reading> currently_reading;
+    @OneToOne
+    private Currently_reading currently_reading;
 
-    @OneToMany
-    private List<Read_books> read_books_id;
+    @OneToOne
+    private Read_books read_books_id;
+
+    public User(String name, String surname, String username, String email, String sex, LocalDate birthday, Wishlist wishlist, Currently_reading currently_reading, Read_books read_books_id) {
+        this.name = name;
+        this.surname = surname;
+        this.username = username;
+        this.email = email;
+        this.sex = sex;
+        this.birthday = birthday;
+        this.wishlist = wishlist;
+        this.currently_reading = currently_reading;
+        this.read_books_id = read_books_id;
+    }
+
+    public User() {
+
+    }
 }

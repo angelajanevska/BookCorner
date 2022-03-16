@@ -13,5 +13,9 @@ public class Quotes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String quote;
+
+    public Quotes() {
+    }
 }

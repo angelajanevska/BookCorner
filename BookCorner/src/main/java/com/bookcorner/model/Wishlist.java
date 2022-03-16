@@ -3,6 +3,7 @@ package com.bookcorner.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -11,9 +12,9 @@ public class Wishlist {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    private User user_id;
+    @ManyToMany
+    private List<Book> books;
 
-    @ManyToOne
-    private Book book_id;
+    public Wishlist() {
+    }
 }

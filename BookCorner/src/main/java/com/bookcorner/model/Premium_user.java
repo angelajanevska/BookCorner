@@ -15,4 +15,7 @@ public class Premium_user {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long user_id;
 
+
+    public Premium_user() {
+    }
 }
