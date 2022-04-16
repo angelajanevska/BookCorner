@@ -14,10 +14,10 @@ public class Book {
     private Long isbn;
     private String title;
     private String author;
-    private LocalDate release_date;
+    private String release_date;
     private Integer pages;
 
-    public Book(String title, String author, LocalDate release_date, Integer pages) {
+    public Book(String title, String author, String release_date, Integer pages) {
         this.title = title;
         this.author = author;
         this.release_date = release_date;
