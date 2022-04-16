@@ -21,13 +21,15 @@ public class Book {
     private String isbn;
     private String release_date;
     private String pages;
+    private String coverURL;
 
-    public Book(String title, String author, String isbn, String release_date, String pages) {
+    public Book(String title, String author, String isbn, String release_date, String pages, String coverURL) {
         this.title = title;
         this.author = author;
         this.isbn = isbn;
         this.release_date = release_date;
         this.pages = pages;
+        this.coverURL = coverURL;
     }
 
     public Book() {

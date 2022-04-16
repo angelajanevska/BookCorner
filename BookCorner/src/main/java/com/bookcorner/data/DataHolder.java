@@ -32,7 +32,7 @@ public class DataHolder {
 
         while ((row = bookReader.readNext()) != null) {
             String[] barData = Arrays.toString(row).split(",");
-            books.add(new Book(barData[8], barData[6], barData[5].replace(" ",""), barData[7], barData[3].replace(" ","")));
+            books.add(new Book(barData[8], barData[6], barData[4].replace(" ",""), barData[7], barData[3].replace(" ",""), barData[row.length-2]));
         }
 
         this.bookRepository.saveAll(books);

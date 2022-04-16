@@ -13,8 +13,6 @@ import java.util.Arrays;
 
 @Service
 public interface BookService {
-    void save(String title, String author, String isbn, String release_date, String pages);
-
-    void saveBookInit(String title, String author, String isbn, String release_date, String pages) throws IOException, CsvValidationException;
+    void save(String title, String author, String isbn, String release_date, String pages, String coverURL);
 
 }

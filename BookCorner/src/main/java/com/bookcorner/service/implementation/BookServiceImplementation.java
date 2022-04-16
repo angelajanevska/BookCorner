@@ -15,13 +15,8 @@ public class BookServiceImplementation implements BookService {
 
 
     @Override
-    public void save(String title, String author, String isbn, String release_date, String pages) {
-        this.bookRepository.save(new Book(title,author,isbn,release_date,pages));
+    public void save(String title, String author, String isbn, String release_date, String pages, String coverURL) {
+        this.bookRepository.save(new Book(title,author,isbn,release_date,pages,coverURL));
     }
-
-    @Override
-    public void saveBookInit(String title, String author, String isbn, String release_date, String pages) throws IOException, CsvValidationException {
-    }
-
 
 }
