@@ -1,7 +1,8 @@
 package com.bookcorner;
 
 import com.bookcorner.model.Book;
-import com.bookcorner.repository.impl.BookRepositoryImpl;
+import com.bookcorner.service.BookService;
+import com.bookcorner.service.impl.BookServiceImpl;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 import org.springframework.boot.SpringApplication;
@@ -27,16 +28,17 @@ public class BookcornerApplication {
 
     @PostConstruct
     public void init() throws IOException, CsvValidationException {
-        BookRepositoryImpl bookRepository = null;
-        CSVReader bookReader = new CSVReader(new FileReader("src/main/resources/data.csv"));
-        String[] row;
-        int flag = 0;
-        Random random = new Random();
+//        BookService bookService = null;
+//        CSVReader bookReader = new CSVReader(new FileReader("src/main/resources/data.csv"));
+//        String[] row;
+//        int flag = 0;
+//        Random random = new Random();
+//
+//        while((row = bookReader.readNext())!= null){
+//            String []barData = Arrays.toString(row).split(",");
+//                bookService.save(barData[8], barData[6], barData[7], Integer.decode(barData[3]));
+//        }
 
-        while((row = bookReader.readNext())!= null){
-            String []barData = Arrays.toString(row).split(",");
-                bookRepository.save(barData[8], barData[6], barData[7], Integer.decode(barData[3]));
-        }
     }
 
 

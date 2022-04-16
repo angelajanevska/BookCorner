@@ -1,4 +1,5 @@
 package com.bookcorner.service;
 
-public class BookService {
+public interface BookService {
+    void save(String title, String author, String release_date, Integer pages);
 }
