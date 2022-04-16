@@ -18,4 +18,6 @@ public class HomeController {
     public String getContactUs(){
         return "contact";
     }
+
+
 }
