@@ -15,4 +15,5 @@ import java.util.Arrays;
 
 @Repository
 public interface BookRepository extends JpaRepository<Book, Long> {
+
 }

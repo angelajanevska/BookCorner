@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="zxx">
+<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -10,31 +10,25 @@
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-      <link rel="apple-touch-icon" href="../static/apple-touch-icon.png">
-      <!-- Place favicon.ico in the root directory -->
-
-      <link rel="stylesheet" href="../static/plugins/bootstrap/bootstrap.min.css">
+      <link rel="apple-touch-icon" th:href="@{/apple-touch-icon.png}">
+      <link rel="stylesheet" th:href="@{/plugins/bootstrap/bootstrap.min.css}">
       <!-- ThemeFisher Icon -->
-      <link rel="stylesheet" href="../static/plugins/themefisher-fonts/themefisher-fonts.css">
+      <link rel="stylesheet" th:href="@{/plugins/themefisher-fonts/themefisher-fonts.css}">
       <!-- Light Box -->
-      <link rel="stylesheet" href="../static/plugins/magnific-popup/magnific-popup.css">
+      <link rel="stylesheet" th:href="@{/plugins/magnific-popup/magnific-popup.css}">
       <!-- animation css -->
-      <link rel="stylesheet" href="../static/plugins/animate/animate.css">
+      <link rel="stylesheet" th:href="@{/plugins/animate/animate.css}">
       <!-- slick slider -->
-      <link rel="stylesheet" href="../static/plugins/slick/slick.css">
+      <link rel="stylesheet" th:href="@{/plugins/slick/slick.css}">
+
+      <script th:src="@{/plugins/modernizr.min.js}"></script>
 
       <!-- Revolution Slider -->
-      <link rel="stylesheet" href="../static/css/style.css">
+      <link rel="stylesheet" th:href="@{/css/style.css}">
 
-    <style>
+      <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
-      #map_canvas {
-        height: 100%;
-      }
-      #filter-inline{
-          display: inline-block;
-      }
       .book-image{
           width: 200px;
       }
@@ -58,7 +52,6 @@
       }
       /* Optional: Makes the sample page fill the window. */
     </style>
-    <script src="../static/plugins/modernizr.min.js"></script>
   </head>
   <body>
     <!--[if lt IE 8]>
@@ -103,32 +96,32 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand logo" href="index.html">
-                    <img src="../static/images/logo-yellow.png" alt="">
+                    <img th:src="@{/images/logo-yellow.png}" alt="">
                 </a>
             </div>
 
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav navbar-right menu">
                     <li class="nav-item">
-                        <a href="index.html">Home</a>
+                        <a th:href="@{/}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="services.html">Service</a>
+                        <a th:href="@{/services}">Service</a>
                     </li>
                     <li class="nav-item">
-                        <a href="books.html">Portfolio</a>
+                        <a th:href="@{/portfolio}">Portfolio</a>
                     </li>
                     <li class="nav-item">
-                        <a href="blog.html">Blog</a>
+                        <a th:href="@{/blog}">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a href="contact.html">Contact</a>
+                        <a th:href="@{/contact}">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a href="">Log in</a>
+                        <a th:href="@{/login}">Log in</a>
                     </li>
                     <li class="nav-item">
-                        <a href="">Register</a>
+                        <a th:href="@{/register}">Register</a>
                     </li>
                 </ul>
                 <!-- Left links -->
@@ -150,7 +143,7 @@
               <!--Book gallery item-->
               <div class="col-md-12 col-sm-6 col-xs-12 book-item">
                   <div class="d-flex justify-content-center">
-                      <img class="popular-image" src="../static/images/portfolio/portfolio-img1.jpg" alt="Portfolio">
+                      <img class="popular-image" th:src="@{/images/portfolio/portfolio-img1.jpg}" alt="Portfolio">
                       <div class="popular-item">
                           <a href="books-single.html"><h1>Book title</h1></a>
                           <h3><i>Most popular book at the moment..</i></h3><br><br>
@@ -195,61 +188,11 @@
           <br>
           <div class="row d-flex justify-content-center">
               <!--Book gallery item-->
-              <div class="col-md-2 col-sm-6 col-xs-12 book-item">
-                  <img class="book-image" src="../static/images/portfolio/portfolio-img1.jpg" alt="Portfolio">
+              <div th:each="book : ${books}" class="col-md-2 col-sm-6 col-xs-12 book-item">
+                  <img class="book-image" th:src="${book.getCoverURL()}" alt="Portfolio">
                   <div>
-                      <a href="books-single.html"><h3>Book title</h3></a>
-                      <p class="">Book author</p>
-                      <p class="">Book genre</p>
-                      <button class="btn btn-main">Add to wishlist</button>
-                  </div>
-              </div>
-              <!--Book gallery item-->
-              <div class="col-md-2 col-sm-6 col-xs-12 book-item">
-                  <img class="book-image" src="../static/images/portfolio/portfolio-img1.jpg" alt="Portfolio">
-                  <div>
-                      <a href="books-single.html"><h3>Book title</h3></a>
-                      <p class="">Book author</p>
-                      <p class="">Book genre</p>
-                      <button class="btn btn-main">Add to wishlist</button>
-                  </div>
-              </div>
-              <!--Book gallery item-->
-              <div class="col-md-2 col-sm-6 col-xs-12 book-item">
-                  <img class="book-image" src="../static/images/portfolio/portfolio-img1.jpg" alt="Portfolio">
-                  <div>
-                      <a href="books-single.html"><h3>Book title</h3></a>
-                      <p class="">Book author</p>
-                      <p class="">Book genre</p>
-                      <button class="btn btn-main">Add to wishlist</button>
-                  </div>
-              </div>
-              <!--Book gallery item-->
-              <div class="col-md-2 col-sm-6 col-xs-12 book-item">
-                  <img class="book-image" src="../static/images/portfolio/portfolio-img1.jpg" alt="Portfolio">
-                  <div>
-                      <a href="books-single.html"><h3>Book title</h3></a>
-                      <p class="">Book author</p>
-                      <p class="">Book genre</p>
-                      <button class="btn btn-main">Add to wishlist</button>
-                  </div>
-              </div>
-              <!--Book gallery item-->
-              <div class="col-md-2 col-sm-6 col-xs-12 book-item">
-                  <img class="book-image" src="../static/images/portfolio/portfolio-img1.jpg" alt="Portfolio">
-                  <div>
-                      <a href="books-single.html"><h3>Book title</h3></a>
-                      <p class="">Book author</p>
-                      <p class="">Book genre</p>
-                      <button class="btn btn-main">Add to wishlist</button>
-                  </div>
-              </div>
-              <!--Book gallery item-->
-              <div class="col-md-2 col-sm-6 col-xs-12 book-item">
-                  <img class="book-image" src="../static/images/portfolio/portfolio-img1.jpg" alt="Portfolio">
-                  <div>
-                      <a href="books-single.html"><h3>Book title</h3></a>
-                      <p class="">Book author</p>
+                      <a href="books-single.html"><h3 th:text="${book.title}"></h3></a>
+                      <p class="" th:text="${book.author}"></p>
                       <p class="">Book genre</p>
                       <button class="btn btn-main">Add to wishlist</button>
                   </div>
@@ -267,7 +210,7 @@
                           <p class="book-description">Book description Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><br>
                           <button class="btn btn-secondary">Search books by author</button>
                       </div>
-                      <img class="popular-image" src="../static/images/portfolio/portfolio-img1.jpg" alt="Portfolio">
+                      <img class="popular-image" th:src="@{/images/portfolio/portfolio-img1.jpg}" alt="Portfolio">
                   </div>
               </div>
           </div>
@@ -345,24 +288,21 @@
         </div>
     </footer>
 
-    <script src="../static/plugins/jquery.min.js"></script>
+    <script th:src="@{/plugins/jquery.min.js}"></script>
 
-    <script src="../static/plugins/bootstrap/bootstrap.min.js"></script>
+    <script th:src="@{/plugins/bootstrap/bootstrap.min.js}"></script>
     <!-- slick slider -->
-    <script src="../static/plugins/slick/slick.min.js"></script>
+    <script th:src="@{/plugins/slick/slick.min.js}"></script>
     <!-- filter -->
-    <script src="../static/plugins/filterizr/jquery.filterizr.min.js"></script>
+    <script th:src="@{/plugins/filterizr/jquery.filterizr.min.js}"></script>
     <!-- Lightbox -->
-    <script src="../static/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script th:src="@{/plugins/magnific-popup/jquery.magnific-popup.min.js}"></script>
     <!-- Parallax -->
-    <script src="../static/plugins/parallax.min.js"></script>
+    <script th:src="@{/plugins/parallax.min.js}"></script>
     <!-- Video -->
-    <script src="../static/plugins/jquery.vide.js"></script>
-    <!-- google map -->
-<!--    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu5nZKbeK-WHQ70oqOWo-_4VmwOwKP9YQ"></script>-->
-<!--    <script src="../static/plugins/google-map/gmap.js"></script>-->
+    <script th:src="@{/plugins/jquery.vide.js}"></script>
 
-    <script src="../static/js/script.js"></script>
+    <script th:src="@{/js/script.js}"></script>
     </body>
 
     </html>
