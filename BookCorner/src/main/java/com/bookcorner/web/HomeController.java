@@ -17,14 +17,14 @@ public class HomeController {
 
     @GetMapping
     public String getHomePage(Model model) {
-        model.addAttribute("books", bookService.listBooks().subList(0,6));
+        model.addAttribute("books", bookService.findAll().subList(0,6));
         return "index";
 //        return "header";
     }
 
     @GetMapping("/books")
     public String getBooksPage(Model model) {
-        model.addAttribute("books", bookService.listBooks().subList(0,20));
+        model.addAttribute("books", bookService.findAll().subList(0,20));
         return "books";
 //        return "header";
     }

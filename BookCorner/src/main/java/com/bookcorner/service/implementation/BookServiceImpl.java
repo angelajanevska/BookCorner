@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookServiceImpl implements BookService {
@@ -23,8 +24,18 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<Book> listBooks() {
+    public List<Book> findAll() {
         return this.bookRepository.findAll();
+    }
+
+    @Override
+    public Optional<Book> findById(Long id) {
+        return this.bookRepository.findById(id);
+    }
+
+    @Override
+    public Optional<Book> findByTitle(String title) {
+        return this.bookRepository.findByTitle(title);
     }
 
 

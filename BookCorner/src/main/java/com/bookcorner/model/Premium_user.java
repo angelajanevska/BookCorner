@@ -12,9 +12,7 @@ import java.util.List;
 @Entity
 public class Premium_user {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long user_id;
-
+    private String username;
 
     public Premium_user() {
     }
