@@ -28,11 +28,14 @@ public class DataHolder {
     void init() throws IOException, CsvValidationException {
         CSVReader bookReader = new CSVReader(new FileReader("src/main/resources/static/data/books.csv"));
         String[] row;
+        String image;
         bookReader.readNext();
 
         while ((row = bookReader.readNext()) != null) {
             String[] barData = Arrays.toString(row).split(",");
-            books.add(new Book(barData[8], barData[6], barData[4].replace(" ",""), barData[7], barData[3].replace(" ",""), barData[row.length-2]));
+            if(barData[18].contains("https://")) {
+                books.add(new Book(barData[8], barData[6], barData[4].replace(" ", ""), barData[7], barData[3].replace(" ", ""), barData[18]));
+            } else books.add(new Book(barData[8], barData[6], barData[4].replace(" ", ""), barData[7], barData[3].replace(" ", ""), barData[19]));
         }
 
         this.bookRepository.saveAll(books);
