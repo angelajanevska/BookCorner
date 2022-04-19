@@ -13,8 +13,8 @@ public class Reviews {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
-    private Book book_id;
+//    @OneToOne
+//    private Book book_id;
 
     @OneToMany
     private List<Comment> comment;

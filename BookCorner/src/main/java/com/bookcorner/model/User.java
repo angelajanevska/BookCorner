@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -18,25 +19,21 @@ public class User {
     private String sex;
     private LocalDate birthday;
 
-    @OneToOne
-    private Wishlist wishlist;
+    @OneToMany
+    private List<PersonalBooks> books;
 
-    @OneToOne
-    private Currently_reading currently_reading;
+    @Enumerated(value = EnumType.STRING)
+    private Role role;
 
-    @OneToOne
-    private Read_books read_books_id;
-
-    public User(String name, String surname, String username, String email, String sex, LocalDate birthday, Wishlist wishlist, Currently_reading currently_reading, Read_books read_books_id) {
+    public User(String username, String name, String surname, String email, String sex, LocalDate birthday, Role role) {
+        this.username = username;
         this.name = name;
         this.surname = surname;
-        this.username = username;
         this.email = email;
         this.sex = sex;
         this.birthday = birthday;
-        this.wishlist = wishlist;
-        this.currently_reading = currently_reading;
-        this.read_books_id = read_books_id;
+        this.role = role;
+        this.books = new ArrayList<>();
     }
 
     public User() {

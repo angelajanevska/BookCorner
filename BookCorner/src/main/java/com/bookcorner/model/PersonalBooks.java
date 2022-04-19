@@ -5,25 +5,23 @@ import lombok.Data;
 import javax.persistence.*;
 import java.util.List;
 
-//@Data
-//@Entity
-public class Currently_reading {
+@Data
+@Entity
+public class PersonalBooks {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToMany
-    private List<Book> books;
+    //???? call, ili id da zema od api isbn
+    private String bookApi;
 
-    private Integer current_page;
+    @Enumerated(value = EnumType.STRING)
+    private BookStatus status;
 
-    private Integer pages;
+ //   private Integer current_page;
 
     @OneToMany
     private List<Quotes> favorite_quotes;
 
-
-    public Currently_reading() {
-
-    }
 }
