@@ -11,4 +11,5 @@ public interface PersonalBooksService {
     List<PersonalBooks> findAll();
     Optional<PersonalBooks> findByStatus();
     void save(String bookApi, BookStatus status, Integer current_page, List<Quotes> favorite_quotes);
+    Optional<PersonalBooks> findByStatus(BookStatus status);
 }

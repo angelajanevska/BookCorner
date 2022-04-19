@@ -32,4 +32,9 @@ public class PersonalBooksServiceImpl implements PersonalBooksService {
     public void save(String bookApi, BookStatus status, Integer current_page, List<Quotes> favorite_quotes) {
         this.personalBooksRepository.save(new PersonalBooks(bookApi, status, current_page, favorite_quotes));
     }
+
+    @Override
+    public Optional<PersonalBooks> findByStatus(BookStatus status) {
+        return this.personalBooksRepository.findByStatus(status);
+    }
 }
