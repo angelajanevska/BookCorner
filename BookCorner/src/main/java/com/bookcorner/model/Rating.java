@@ -8,7 +8,7 @@ import java.util.List;
 
 @Data
 @Entity
-public class Reviews {
+public class Rating {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -16,11 +16,15 @@ public class Reviews {
 //    @OneToOne
 //    private Book book_id;
 
-    @OneToMany
-    private List<Comment> comment;
+//    @OneToMany
+//    private List<Comment> comment;
 
     private Integer rating;
 
-    public Reviews() {
+    public Rating() {
+    }
+
+    public Rating(Integer rating) {
+        this.rating = rating;
     }
 }

@@ -1,7 +1,9 @@
 package com.bookcorner.data;
 
 import com.bookcorner.model.Book;
+import com.bookcorner.model.Rating;
 import com.bookcorner.repository.BookRepository;
+import com.bookcorner.repository.RatingRepository;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 import lombok.Getter;
@@ -18,10 +20,12 @@ import java.util.List;
 @Getter
 public class DataHolder {
     private final BookRepository bookRepository;
+    private final RatingRepository ratingRepository;
     List<Book> books = new ArrayList<>();
 
-    public DataHolder(BookRepository bookRepository) {
+    public DataHolder(BookRepository bookRepository, RatingRepository ratingRepository) {
         this.bookRepository = bookRepository;
+        this.ratingRepository = ratingRepository;
     }
 
     @PostConstruct
@@ -37,7 +41,10 @@ public class DataHolder {
                 books.add(new Book(barData[8], barData[6], barData[4].replace(" ", ""), barData[7], barData[3].replace(" ", ""), barData[18]));
             } else books.add(new Book(barData[8], barData[6], barData[4].replace(" ", ""), barData[7], barData[3].replace(" ", ""), barData[19]));
         }
-
         this.bookRepository.saveAll(books);
+
+        for(int i = 1; i <= 5; i++){
+            this.ratingRepository.save(new Rating(i));
+        }
     }
 }

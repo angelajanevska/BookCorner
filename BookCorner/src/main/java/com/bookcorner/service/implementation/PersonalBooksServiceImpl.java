@@ -1,6 +1,8 @@
 package com.bookcorner.service.implementation;
 
+import com.bookcorner.model.BookStatus;
 import com.bookcorner.model.PersonalBooks;
+import com.bookcorner.model.Quotes;
 import com.bookcorner.repository.PersonalBooksRepository;
 import com.bookcorner.service.PersonalBooksService;
 import org.springframework.stereotype.Service;
@@ -24,5 +26,10 @@ public class PersonalBooksServiceImpl implements PersonalBooksService {
     @Override
     public Optional<PersonalBooks> findByStatus() {
         return Optional.empty();
+    }
+
+    @Override
+    public void save(String bookApi, BookStatus status, Integer current_page, List<Quotes> favorite_quotes) {
+        this.personalBooksRepository.save(new PersonalBooks(bookApi, status, current_page, favorite_quotes));
     }
 }
