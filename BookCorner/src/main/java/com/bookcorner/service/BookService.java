@@ -16,5 +16,6 @@ public interface BookService {
 
     Optional<Book> findByTitle(String title);
 
+    Optional<Book> findByIsbn(String isbn);
 
 }

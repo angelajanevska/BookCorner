@@ -191,7 +191,9 @@
                       <a href="books-single.html"><h3 th:text="${book.title}"></h3></a>
                       <p class="" th:text="${book.author}"></p>
                       <p class="">Book genre</p>
-                      <button class="btn btn-main">Add to wishlist</button>
+                      <form th:action="@{'book-wishlist/{isbn}' (isbn=${book.getIsbn()})}" th:method="POST">
+                          <button class="btn btn-main" >Add to wishlist</button>
+                      </form>
                   </div>
               </div>
           </div>

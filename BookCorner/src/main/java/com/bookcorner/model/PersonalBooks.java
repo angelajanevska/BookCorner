@@ -19,14 +19,22 @@ public class PersonalBooks {
     @Enumerated(value = EnumType.STRING)
     private BookStatus status;
 
+    @ManyToOne
+    private User user;
+
     private Integer current_page;
 
     @OneToMany
     private List<Quotes> favorite_quotes;
 
-    public PersonalBooks(String bookApi, BookStatus status, Integer current_page, List<Quotes> favorite_quotes) {
+    public PersonalBooks() {
+
+    }
+
+    public PersonalBooks(String bookApi, BookStatus status, User user, Integer current_page, List<Quotes> favorite_quotes) {
         this.bookApi = bookApi;
         this.status = status;
+        this.user = user;
         this.current_page = current_page;
         this.favorite_quotes = favorite_quotes;
     }

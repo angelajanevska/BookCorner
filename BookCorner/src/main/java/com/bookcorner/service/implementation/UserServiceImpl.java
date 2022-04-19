@@ -32,11 +32,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
-        return (UserDetails) userRepository.findByUsername(username).orElseThrow(()->new UsernameNotFoundException(username));
-    }
-
-    @Override
     public User register(String name, String surname, String username, String email, LocalDate dateOfBirth, String password, String repeatedPassword) {
         if (username==null || username.isEmpty()  || password==null || password.isEmpty())
             throw new InvalidArgumentsException();
@@ -46,7 +41,15 @@ public class UserServiceImpl implements UserService {
                 || this.userRepository.findByUsername(username).isPresent())
             throw new UsernameAlreadyExistsException(username);
 
-        Date date = Date.valueOf(dateOfBirth);
-        return this.userRepository.save(new User(name,surname,username,email,date,Role.ROLE_USER,passwordEncoder.encode(password)));
+        return this.userRepository.save(new User(name,surname,username,email,dateOfBirth,Role.ROLE_USER,passwordEncoder.encode(password)));
+
     }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
+        return (UserDetails) userRepository.findByUsername(username).orElseThrow(()->new UsernameNotFoundException(username));
+    }
+
+
+
 }

@@ -38,5 +38,9 @@ public class BookServiceImpl implements BookService {
         return this.bookRepository.findByTitle(title);
     }
 
+    @Override
+    public Optional<Book> findByIsbn(String isbn) {
+        return this.bookRepository.findByIsbn(isbn);
+    }
 
 }

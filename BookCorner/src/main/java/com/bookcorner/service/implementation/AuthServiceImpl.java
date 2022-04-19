@@ -30,17 +30,4 @@ public class AuthServiceImpl implements AuthService {
         return userRepository.findByUsernameAndPassword(username,password).orElseThrow(InvalidUserCredentialsException::new);
     }
 
-//    @Override
-//    public User register(String name, String surname, String username, String email, LocalDate dateOfBirth, String password, String repeatedPassword) {
-//        if (username==null || username.isEmpty()  || password==null || password.isEmpty())
-//            throw new InvalidArgumentsException();
-//        if (!password.equals(repeatedPassword))
-//            throw new PasswordsDoNotMatchException();
-//        if(this.userRepository.findByUsername(username).isPresent()
-//                || this.userRepository.findByUsername(username).isPresent())
-//            throw new UsernameAlreadyExistsException(username);
-//
-//        Date date = Date.valueOf(dateOfBirth);
-//        return this.userRepository.save(new User(name,surname,username,email,date,Role.ROLE_USER,password));
-//    }
 }

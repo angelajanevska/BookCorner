@@ -47,14 +47,14 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("angela")
-                .password(passwordEncoder.encode("123"))
-                .authorities("ROLE_USER")
-                .and()
-                .withUser("admin")
-                .password(passwordEncoder.encode("admin"))
-                .authorities("ROLE_ADMIN");
+//        auth.inMemoryAuthentication()
+//                .withUser("angela")
+//                .password(passwordEncoder.encode("123"))
+//                .authorities("ROLE_USER")
+//                .and()
+//                .withUser("admin")
+//                .password(passwordEncoder.encode("admin"))
+//                .authorities("ROLE_ADMIN");
         auth.authenticationProvider(authenticationProvider);
     }
 }
