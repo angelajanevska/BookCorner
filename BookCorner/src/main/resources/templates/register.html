@@ -31,6 +31,11 @@
 
     <script th:src="@{/plugins/modernizr.min.js}"></script>
 
+    <style>
+        #log-in-link:hover{
+            color: antiquewhite !important;
+        }
+    </style>
 
 </head>
 <body>
@@ -70,7 +75,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand logo" href="index.html">
-                <img src="../static/images/logo-yellow.png" alt="">
+                <img th:src="@{/images/logo-yellow.png}" alt="">
             </a>
         </div>
 
@@ -78,13 +83,12 @@
     <!-- Container wrapper -->
 </nav>
 
-
 <!-- Contact From Study Sections
  =========================-->
 <section class="contact-form">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 padding-0" style="display:flex; justify-content:space-between">
+            <div class="col-md-12 padding-0 align-items-center" style="display:flex; justify-content:space-between">
                 <!-- Contact Information -->
                 <div class="col-md-6 send-mail">
                     <div class="col-md-10">
@@ -93,30 +97,33 @@
                     </div>
                     <form class="" style="align-content: center" method="post">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Name">
+                                <input type="text" class="form-control" placeholder="Name" required="" autofocus="" id="name" name="name">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Surname">
+                                <input type="text" class="form-control" placeholder="Surname" required="" autofocus="" id="surname" name="surname">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Username">
+                                <input type="text" class="form-control" placeholder="Username" required="" autofocus="" id="username" name="username">
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control" placeholder="Email">
+                                <input type="email" class="form-control" placeholder="Email" required="" autofocus="" id="email" name="email">
+                            </div>
+                            <div class="form-group">
+                                <input type="date" class="form-control" placeholder="Date of birth" required="" autofocus="" id="dateOfBirth" name="dateOfBirth">
                             </div>
                             <div class="form-group margin">
-                                <input type="text" class="form-control" placeholder="Password">
+                                <input type="password" class="form-control" placeholder="Password" required="" autofocus="" id="password" name="password">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Repeat Password">
+                                <input type="password" class="form-control" placeholder="Repeat Password" required="" autofocus="" id="repeatedPassword" name="repeatedPassword">
                             </div>
-
                             <div class="contact-btn text-center">
-                                <input class="btn btn-default btn-main" type="submit" value="Register">
-                            </div> <br>
-                            <p class="text-center">Already have an account? <a th:href="@{/login}">Log in</a></p>
+                                <input class="btn btn-default btn-main" type="submit" value="Register" style="width: 100%;">
+                            </div><br>
+                            <p class="text-center">Already have an account? <a th:href="@{/login}" class="blog-content-title" id="log-in-link">Log in</a></p>
                     </form>
                     </div>
+                    <p th:if="${hasError}" th:text="${error}" class="text-danger"></p>
                 </div>
                 <div class="col-md-6" style="margin: auto 0;">
                     <div class="col-md-10">

@@ -1,3 +1,5 @@
+package com.bookcorner.web.filter;
+
 import com.bookcorner.model.User;
 import org.springframework.context.annotation.Profile;
 

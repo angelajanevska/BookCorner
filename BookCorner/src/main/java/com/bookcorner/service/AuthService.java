@@ -1,9 +1,9 @@
 package com.bookcorner.service;
 
 import com.bookcorner.model.User;
-import org.springframework.stereotype.Service;
+import java.time.LocalDate;
 
 public interface AuthService {
     User login(String username, String password);
-    User register(String username, String password, String repeatPassword, String name, String surname);
+//    User register(String name, String surname, String username, String email, LocalDate dateOfBirth, String password, String repeatedPassword);
 }

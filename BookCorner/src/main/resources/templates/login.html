@@ -31,6 +31,11 @@
 
     <script th:src="@{/plugins/modernizr.min.js}"></script>
 
+    <style>
+        #register-link:hover{
+            color: antiquewhite !important;
+        }
+    </style>
 </head>
 <body>
 <div class="loading">
@@ -88,21 +93,21 @@
                 <div class="col-md-6 send-mail">
                     <div class="col-md-10">
                         <div class="title text-center">
-                            <h2>Register now!</h2>
+                            <h2>Log in!</h2>
                         </div>
                         <form class="" style="align-content: center" method="post" action="/login">
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Username" id="username" name="username" required="">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Password" id="password" name="password" required="">
+                                <input type="password" class="form-control" placeholder="Password" id="password" name="password" required="">
                             </div>
                             <div th:text="${param.error}" class="text-danger"></div>
-                            <p th:text="${error}" class="text-danger"></p>
+                            <p th:if="${hasError}" th:text="${error}" class="text-danger"></p>
                             <div class="contact-btn text-center">
-                                <input class="btn btn-default btn-main" type="submit" value="Log in" >
+                                <input class="btn btn-default btn-main" type="submit" value="Log in" width="100%">
                             </div> <br>
-                            <p class="text-center">Don't have an account? <a th:href="@{/register}">Register!</a></p>
+                            <h5 class="text-center">Don't have an account? <a th:href="@{/register}" id="register-link" class="blog-content-title">Register!</a></h5>
                         </form>
                     </div>
                 </div>

@@ -13,9 +13,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
 public class WebSecurity extends WebSecurityConfigurerAdapter {
     private final PasswordEncoder passwordEncoder;
+    private final CustomUsernamePasswordAuthenticationProvider authenticationProvider;
 
-    public WebSecurity(PasswordEncoder passwordEncoder){
+    public WebSecurity(PasswordEncoder passwordEncoder, CustomUsernamePasswordAuthenticationProvider authenticationProvider){
         this.passwordEncoder = passwordEncoder;
+        this.authenticationProvider = authenticationProvider;
     }
 
     @Override
@@ -39,6 +41,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/login")
                 .and()
                 .exceptionHandling().accessDeniedPage("/access-denied");
+
+        http.headers().frameOptions().disable();
     }
 
     @Override
@@ -51,5 +55,6 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                 .withUser("admin")
                 .password(passwordEncoder.encode("admin"))
                 .authorities("ROLE_ADMIN");
+        auth.authenticationProvider(authenticationProvider);
     }
 }
