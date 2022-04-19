@@ -13,6 +13,7 @@ import java.util.List;
 public class User {
     @Id
     private String username;
+    private String password;
     private String name;
     private String surname;
     private String email;
@@ -25,8 +26,9 @@ public class User {
     @Enumerated(value = EnumType.STRING)
     private Role role;
 
-    public User(String username, String name, String surname, String email, String sex, LocalDate birthday, Role role) {
+    public User(String username, String password, String name, String surname, String email, String sex, LocalDate birthday, Role role) {
         this.username = username;
+        this.password = password;
         this.name = name;
         this.surname = surname;
         this.email = email;

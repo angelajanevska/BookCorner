@@ -90,16 +90,17 @@
                         <div class="title text-center">
                             <h2>Register now!</h2>
                         </div>
-                        <form class="" style="align-content: center" method="post">
+                        <form class="" style="align-content: center" method="post" action="/login">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Email">
+                                <input type="text" class="form-control" placeholder="Username" id="username" name="username" required="">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Password">
+                                <input type="text" class="form-control" placeholder="Password" id="password" name="password" required="">
                             </div>
-
+                            <div th:text="${param.error}" class="text-danger"></div>
+                            <p th:text="${error}" class="text-danger"></p>
                             <div class="contact-btn text-center">
-                                <input class="btn btn-default btn-main" type="submit" value="Log in">
+                                <input class="btn btn-default btn-main" type="submit" value="Log in" >
                             </div> <br>
                             <p class="text-center">Don't have an account? <a th:href="@{/register}">Register!</a></p>
                         </form>
