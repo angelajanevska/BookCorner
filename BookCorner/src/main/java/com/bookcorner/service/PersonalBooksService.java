@@ -10,8 +10,21 @@ import java.util.Optional;
 
 public interface PersonalBooksService {
     List<PersonalBooks> findAll();
+
     Optional<PersonalBooks> findByStatus();
-    void save(String bookApi, BookStatus status, User user, Integer current_page, List<Quotes> favorite_quotes);
+
+    PersonalBooks save(String bookApi, BookStatus status, User user, Integer current_page, List<Quotes> favorite_quotes);
+
     Optional<PersonalBooks> findByStatus(BookStatus status);
+
+    Optional<PersonalBooks> findByStatusAndUser(BookStatus status, User user);
+
+    void editStatus(String isbn, BookStatus status);
+
+    void deleteFromWishlist(String isbn);
+
+    Optional<PersonalBooks> findById(Long id);
+
+    Optional<PersonalBooks> findByUser(User user);
 
 }

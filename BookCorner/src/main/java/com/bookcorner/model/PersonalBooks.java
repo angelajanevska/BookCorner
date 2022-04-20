@@ -14,7 +14,7 @@ public class PersonalBooks {
     private Long id;
 
     //???? call, ili id da zema od api isbn
-    private String bookApi;
+    private String ISBN;
 
     @Enumerated(value = EnumType.STRING)
     private BookStatus status;
@@ -31,8 +31,8 @@ public class PersonalBooks {
 
     }
 
-    public PersonalBooks(String bookApi, BookStatus status, User user, Integer current_page, List<Quotes> favorite_quotes) {
-        this.bookApi = bookApi;
+    public PersonalBooks(String isbn, BookStatus status, User user, Integer current_page, List<Quotes> favorite_quotes) {
+        this.ISBN = isbn;
         this.status = status;
         this.user = user;
         this.current_page = current_page;

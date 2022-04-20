@@ -1,5 +1,6 @@
 package com.bookcorner.service.implementation;
 
+import com.bookcorner.model.PersonalBooks;
 import com.bookcorner.model.Role;
 import com.bookcorner.model.User;
 import com.bookcorner.model.exceptions.InvalidArgumentsException;
@@ -43,6 +44,12 @@ public class UserServiceImpl implements UserService {
 
         return this.userRepository.save(new User(name,surname,username,email,dateOfBirth,Role.ROLE_USER,passwordEncoder.encode(password)));
 
+    }
+
+    @Override
+    public void updateBooks(PersonalBooks book, String username) {
+        User user = this.userRepository.findByUsername(username).stream().findFirst().get();
+//        user.getBooks().add(book);
     }
 
     @Override

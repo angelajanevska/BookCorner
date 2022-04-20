@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="zxx">
+<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -16,21 +16,21 @@
             crossorigin="anonymous"></script>
 
 
-    <link rel="apple-touch-icon" href="../static/apple-touch-icon.png">
-    <!-- Place favicon.ico in the root directory -->
-
-    <link rel="stylesheet" href="../static/plugins/bootstrap/bootstrap.min.css">
+    <link rel="apple-touch-icon" th:href="@{/apple-touch-icon.png}">
+    <link rel="stylesheet" th:href="@{/plugins/bootstrap/bootstrap.min.css}">
     <!-- ThemeFisher Icon -->
-    <link rel="stylesheet" href="../static/plugins/themefisher-fonts/themefisher-fonts.css">
+    <link rel="stylesheet" th:href="@{/plugins/themefisher-fonts/themefisher-fonts.css}">
     <!-- Light Box -->
-    <link rel="stylesheet" href="../static/plugins/magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" th:href="@{/plugins/magnific-popup/magnific-popup.css}">
     <!-- animation css -->
-    <link rel="stylesheet" href="../static/plugins/animate/animate.css">
+    <link rel="stylesheet" th:href="@{/plugins/animate/animate.css}">
     <!-- slick slider -->
-    <link rel="stylesheet" href="../static/plugins/slick/slick.css">
+    <link rel="stylesheet" th:href="@{/plugins/slick/slick.css}">
+
+    <script th:src="@{/plugins/modernizr.min.js}"></script>
 
     <!-- Revolution Slider -->
-    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 
     <style>
         /* Always set the map height explicitly to define the size of the div
@@ -40,11 +40,10 @@
         }
 
         /* Optional: Makes the sample page fill the window. */
-        .card{
+        .card {
             background-color: transparent;
         }
     </style>
-    <script src="../static/plugins/modernizr.min.js"></script>
 </head>
 <body>
 <!--[if lt IE 8]>
@@ -89,32 +88,29 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand logo" href="index.html">
-                <img src="../static/images/logo-yellow.png" alt="">
+                <img th:src="@{../static/images/logo-yellow.png}" alt="">
             </a>
         </div>
 
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav navbar-right menu">
                 <li class="nav-item">
-                    <a href="index.html">Home</a>
+                    <a th:href="@{/}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="services.html">Service</a>
+                    <a th:href="@{/books}">Books</a>
                 </li>
-                <li class="nav-item">
-                    <a href="books.html">Portfolio</a>
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <a th:href="@{/profile}">Profile</a>
                 </li>
-                <li class="nav-item">
-                    <a href="blog.html">Blog</a>
+                <li class="nav-item" sec:authorize="!isAuthenticated()">
+                    <a th:href="@{/login}" >Log in</a>
                 </li>
-                <li class="nav-item">
-                    <a href="contact.html">Contact</a>
+                <li class="nav-item" sec:authorize="!isAuthenticated()">
+                    <a th:href="@{/register}">Register</a>
                 </li>
-                <li class="nav-item">
-                    <a href="">Log in</a>
-                </li>
-                <li class="nav-item">
-                    <a href="">Register</a>
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <a th:href="@{/logout}">Log out</a>
                 </li>
             </ul>
             <!-- Left links -->
@@ -140,21 +136,27 @@
                     <div class="categories widgets">
                         <div class="list-group text-center">
                             <div class="list-group-item active">Wishlist</div>
-                            <a href="#" class="book-line">
-                                    <div class="card text-center">
-                                        <div class="card-header">
-                                                <img class=""
-                                                     src="https://imgs.search.brave.com/FNMXb_tQyA7Hd3cVME0fDyKz7Md-eEutbQZThHC9WJ0/rs:fit:320:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC4y/ekJjSVhDb3ZEVmhM/c3g5VDdpV3F3SGFL/OSZwaWQ9QXBp"
-                                                     alt="Portfolio">
+                            <a href="#" class="book-line" th:each="book : ${wishlist}">
+                                <div class="card text-center">
+                                    <div class="card-header">
+                                        <img class="" th:src="${book.coverURL}"
+                                             alt="Portfolio">
+                                        <!--                                             src="https://imgs.search.brave.com/FNMXb_tQyA7Hd3cVME0fDyKz7Md-eEutbQZThHC9WJ0/rs:fit:320:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC4y/ekJjSVhDb3ZEVmhM/c3g5VDdpV3F3SGFL/OSZwaWQ9QXBp"-->
 
-                                        </div>
-                                        <div class="card-body">
-                                            <a href="books-single.html" class="padding-0"><h3>The hunger games</h3></a>
-                                            <p class="">Suzanne Collins</p>
-                                            <p class="">Book genre</p>
-                                            <button class="btn btn-main">Start Reading</button>
-                                        </div>
                                     </div>
+                                    <div class="card-body">
+                                        <a href="books-single.html" class="padding-0"><h3 th:text="${book.getTitle()}"></h3></a>
+                                        <p class="" th:text="${book.author}"></p>
+                                        <p class="">Book genre</p>
+                                        <form th:action="@{'/profile/to-currently-reading/{isbn}' (isbn=${book.getIsbn()})}" th:method="POST">
+                                            <button class="btn btn-main" >Start Reading</button>
+                                        </form>
+
+                                        <form th:action="@{'/profile/delete/{isbn}' (isbn=${book.getIsbn()})}" th:method="DELETE">
+                                            <button class="btn btn-main" >Delete from wishlist</button>
+                                        </form>
+                                    </div>
+                                </div>
                             </a>
 
                         </div>
@@ -169,13 +171,23 @@
                     <div class="categories widgets">
                         <div class="list-group text-center">
                             <div class="list-group-item active">Currently reading</div>
-                            <a href="#" class="list-group-item">Web Design</a>
-                            <a href="#" class="list-group-item">User Interface</a>
-                            <a href="#" class="list-group-item">User Experience</a>
-                            <a href="#" class="list-group-item">Typography</a>
-                            <a href="#" class="list-group-item">Color Sense</a>
-                            <a href="#" class="list-group-item">Future Trend</a>
-                            <a href="#" class="list-group-item">Modern Design</a>
+                            <a href="#" class="book-line" th:each="currBook : ${currentlyReading}">
+                                <div class="card text-center">
+                                    <div class="card-header">
+                                        <img class="" th:src="${currBook.coverURL}"
+                                             alt="Portfolio">
+                                    </div>
+                                    <div class="card-body">
+                                        <a href="books-single.html" class="padding-0"><h3 th:text="${currBook.title}"></h3></a>
+                                        <p class="" th:text="${currBook.author}"></p>
+                                        <p class="">Book genre</p>
+                                        <form th:action="@{'/profile/to-read-books/{isbn}' (isbn=${currBook.getIsbn()})}" th:method="POST">
+                                            <button class="btn btn-main" >Finished</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </a>
+
                         </div>
                     </div>
                 </div>
@@ -187,16 +199,22 @@
                     <div class="categories widgets">
                         <div class="list-group text-center">
                             <div class="list-group-item active">Read Books</div>
+                            <a href="#" class="book-line" th:each="readbook : ${readBooks}">
+                                <div class="card text-center">
+                                    <div class="card-header">
+                                        <img class="" th:src="${readbook.coverURL}"
+                                             alt="Portfolio">
+                                        <!--                                             src="https://imgs.search.brave.com/FNMXb_tQyA7Hd3cVME0fDyKz7Md-eEutbQZThHC9WJ0/rs:fit:320:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC4y/ekJjSVhDb3ZEVmhM/c3g5VDdpV3F3SGFL/OSZwaWQ9QXBp"-->
 
-                            <a href="#" class="list-group-item">
-                                web
+                                    </div>
+                                    <div class="card-body">
+                                        <a href="books-single.html" class="padding-0"><h3 th:text="${readbook.title}"></h3></a>
+                                        <p class="" th:text="${readbook.author}"></p>
+                                        <p class="">Book genre</p>
+<!--                                        <button class="btn btn-main">Start Reading</button>-->
+                                    </div>
+                                </div>
                             </a>
-                            <a href="#" class="list-group-item">User Interface</a>
-                            <a href="#" class="list-group-item">User Experience</a>
-                            <a href="#" class="list-group-item">Typography</a>
-                            <a href="#" class="list-group-item">Color Sense</a>
-                            <a href="#" class="list-group-item">Future Trend</a>
-                            <a href="#" class="list-group-item">Modern Design</a>
                         </div>
                     </div>
                     <div class="related-post widgets">
@@ -315,25 +333,21 @@
     </div>
 </footer>
 
+<script th:src="@{/plugins/jquery.min.js}"></script>
 
-<script src="../static/plugins/jquery.min.js"></script>
-
-<script src="../static/plugins/bootstrap/bootstrap.min.js"></script>
+<script th:src="@{/plugins/bootstrap/bootstrap.min.js}"></script>
 <!-- slick slider -->
-<script src="../static/plugins/slick/slick.min.js"></script>
+<script th:src="@{/plugins/slick/slick.min.js}"></script>
 <!-- filter -->
-<script src="../static/plugins/filterizr/jquery.filterizr.min.js"></script>
+<script th:src="@{/plugins/filterizr/jquery.filterizr.min.js}"></script>
 <!-- Lightbox -->
-<script src="../static/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script th:src="@{/plugins/magnific-popup/jquery.magnific-popup.min.js}"></script>
 <!-- Parallax -->
-<script src="../static/plugins/parallax.min.js"></script>
+<script th:src="@{/plugins/parallax.min.js}"></script>
 <!-- Video -->
-<script src="../static/plugins/jquery.vide.js"></script>
-<!-- google map -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu5nZKbeK-WHQ70oqOWo-_4VmwOwKP9YQ"></script>
-<script src="../static/plugins/google-map/gmap.js"></script>
+<script th:src="@{/plugins/jquery.vide.js}"></script>
 
-<script src="../static/js/script.js"></script>
+<script th:src="@{/js/script.js}"></script>
 </body>
 
 </html>

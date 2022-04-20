@@ -57,5 +57,7 @@ public class DataHolder {
         }
 
         this.userRepository.save(new User("proba", "proba", "proba", "aa@gmail.com", LocalDate.now(), Role.ROLE_USER, passwordEncoder.encode("proba")));
+        this.userRepository.save(new User("admin", "admin", "admin", "admin@gmail.com", LocalDate.now(), Role.ROLE_ADMIN, passwordEncoder.encode("admin")));
+
     }
 }
