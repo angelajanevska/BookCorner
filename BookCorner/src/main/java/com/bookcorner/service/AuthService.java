@@ -1,7 +1,6 @@
 package com.bookcorner.service;
 
 import com.bookcorner.model.User;
-import java.time.LocalDate;
 
 public interface AuthService {
     User login(String username, String password);

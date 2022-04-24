@@ -10,7 +10,6 @@ import java.util.*;
 
 @Data
 @Entity
-@Table(name = "Users")
 public class User implements UserDetails {
     @Id
     private String username;
@@ -18,18 +17,15 @@ public class User implements UserDetails {
     private String name;
     private String surname;
     private String email;
-    private LocalDate dateOfBirth;
+    private Date dateOfBirth;
 
+    @OneToMany
+    private List<PersonalBooks> books;
 
     @Enumerated(value = EnumType.STRING)
     private Role role;
 
-    private boolean isAccountNonExpired = true;
-    private boolean isAccountNonLocked = true;
-    private boolean isCredentialsNonExpired = true;
-    private boolean isEnabled = true;
-
-    public User(String name, String surname, String username, String email, LocalDate dateOfBirth, Role role, String password) {
+    public User(String name, String surname, String username, String email, Date dateOfBirth, Role role, String password) {
         this.username = username;
         this.password = password;
         this.name = name;
@@ -37,6 +33,7 @@ public class User implements UserDetails {
         this.email = email;
         this.dateOfBirth = dateOfBirth;
         this.role = role;
+        this.books = new ArrayList<>();
     }
 
     public User() {
@@ -48,23 +45,24 @@ public class User implements UserDetails {
         return Collections.singletonList(role);
     }
 
+
     @Override
     public boolean isAccountNonExpired() {
-        return isAccountNonExpired;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return isAccountNonLocked;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return isCredentialsNonExpired;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return isEnabled;
+        return true;
     }
 }

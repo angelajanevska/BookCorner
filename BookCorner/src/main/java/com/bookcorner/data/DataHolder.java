@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -56,8 +57,8 @@ public class DataHolder {
             this.ratingRepository.save(new Rating(i));
         }
 
-        this.userRepository.save(new User("proba", "proba", "proba", "aa@gmail.com", LocalDate.now(), Role.ROLE_USER, passwordEncoder.encode("proba")));
-        this.userRepository.save(new User("admin", "admin", "admin", "admin@gmail.com", LocalDate.now(), Role.ROLE_ADMIN, passwordEncoder.encode("admin")));
+        this.userRepository.save(new User("proba", "proba", "proba", "aa@gmail.com", Date.valueOf(LocalDate.now()), Role.ROLE_USER, passwordEncoder.encode("proba")));
+        this.userRepository.save(new User("admin", "admin", "admin", "admin@gmail.com", Date.valueOf(LocalDate.now()), Role.ROLE_ADMIN, passwordEncoder.encode("admin")));
 
     }
 }

@@ -15,21 +15,14 @@
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
 
-    <link rel="apple-touch-icon" th:href="@{/apple-touch-icon.png}">
-    <link rel="stylesheet" th:href="@{/plugins/bootstrap/bootstrap.min.css}">
-    <!-- ThemeFisher Icon -->
-    <link rel="stylesheet" th:href="@{/plugins/themefisher-fonts/themefisher-fonts.css}">
-    <!-- Light Box -->
-    <link rel="stylesheet" th:href="@{/plugins/magnific-popup/magnific-popup.css}">
-    <!-- animation css -->
-    <link rel="stylesheet" th:href="@{/plugins/animate/animate.css}">
-    <!-- slick slider -->
-    <link rel="stylesheet" th:href="@{/plugins/slick/slick.css}">
-
-    <!-- Revolution Slider -->
-    <link rel="stylesheet" th:href="@{/css/style.css}">
-
-    <script th:src="@{/plugins/modernizr.min.js}"></script>
+    <link rel="apple-touch-icon" href="../static/apple-touch-icon.png">
+    <link rel="stylesheet" href="../static/plugins/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/plugins/themefisher-fonts/themefisher-fonts.css">
+    <link rel="stylesheet" href="../static/plugins/magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" href="../static/plugins/animate/animate.css">
+    <link rel="stylesheet" href="../static/plugins/slick/slick.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <script src="../static/plugins/modernizr.min.js"></script>
 
     <style>
         #register-link:hover{
@@ -73,7 +66,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand logo" href="index.html">
+            <a class="navbar-brand logo" href="index-page.html">
                 <img th:src="@{/images/logo-yellow.png}" alt="">
             </a>
         </div>
@@ -104,9 +97,9 @@
                             </div>
                             <div th:text="${param.error}" class="text-danger"></div>
                             <p th:if="${hasError}" th:text="${error}" class="text-danger"></p>
-                            <div class="contact-btn text-center">
-                                <input class="btn btn-default btn-main" type="submit" value="Log in" width="100%">
-                            </div> <br>
+                            <!--                            <div class="contact-btn text-center">-->
+                            <button class="btn btn-default btn-main contact-btn text-center" type="submit" value="Log in">Log in</button>
+                            <br>
                             <h5 class="text-center">Don't have an account? <a th:href="@{/register}" id="register-link" class="blog-content-title">Register!</a></h5>
                         </form>
                     </div>
@@ -170,7 +163,7 @@
                 <div class="footer-nav text-center">
                     <div class="col-md-12">
                         <ul>
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="index-page.html">Home</a></li>
                             <li><a href="services.html">Services</a></li>
                             <li><a href="books.html">Portfolio</a></li>
                             <li><a href="#">Our Team</a></li>
@@ -191,21 +184,15 @@
     </div>
 </footer>
 
-<script th:src="@{/plugins/jquery.min.js}"></script>
+<script src="../static/plugins/jquery.min.js"></script>
+<script src="../static/plugins/bootstrap/bootstrap.min.js"></script>
+<script src="../static/plugins/slick/slick.min.js"></script>
+<script src="../static/plugins/filterizr/jquery.filterizr.min.js"></script>
+<script src="../static/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="../static/plugins/parallax.min.js"></script>
+<script src="../static/plugins/jquery.vide.js"></script>
+<script src="../static/js/script.js"></script>
 
-<script th:src="@{/plugins/bootstrap/bootstrap.min.js}"></script>
-<!-- slick slider -->
-<script th:src="@{/plugins/slick/slick.min.js}"></script>
-<!-- filter -->
-<script th:src="@{/plugins/filterizr/jquery.filterizr.min.js}"></script>
-<!-- Lightbox -->
-<script th:src="@{/plugins/magnific-popup/jquery.magnific-popup.min.js}"></script>
-<!-- Parallax -->
-<script th:src="@{/plugins/parallax.min.js}"></script>
-<!-- Video -->
-<script th:src="@{/plugins/jquery.vide.js}"></script>
-
-<script th:src="@{/js/script.js}"></script>
 </body>
 
 </html>

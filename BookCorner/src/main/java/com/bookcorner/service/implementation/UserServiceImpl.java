@@ -8,6 +8,7 @@ import com.bookcorner.model.exceptions.PasswordsDoNotMatchException;
 import com.bookcorner.model.exceptions.UsernameAlreadyExistsException;
 import com.bookcorner.repository.UserRepository;
 import com.bookcorner.service.UserService;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,6 +17,8 @@ import org.springframework.stereotype.Service;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -42,7 +45,8 @@ public class UserServiceImpl implements UserService {
                 || this.userRepository.findByUsername(username).isPresent())
             throw new UsernameAlreadyExistsException(username);
 
-        return this.userRepository.save(new User(name,surname,username,email,dateOfBirth,Role.ROLE_USER,passwordEncoder.encode(password)));
+
+        return this.userRepository.save(new User(name,surname,username,email,Date.valueOf(dateOfBirth),Role.ROLE_USER,passwordEncoder.encode(password)));
 
     }
 
@@ -52,11 +56,9 @@ public class UserServiceImpl implements UserService {
 //        user.getBooks().add(book);
     }
 
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
-        return (UserDetails) userRepository.findByUsername(username).orElseThrow(()->new UsernameNotFoundException(username));
+        return userRepository.findByUsername(username).orElseThrow(()->new UsernameNotFoundException(username));
     }
-
-
-
 }

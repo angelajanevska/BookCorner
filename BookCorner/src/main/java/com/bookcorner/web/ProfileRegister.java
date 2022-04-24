@@ -7,6 +7,7 @@ import com.bookcorner.model.User;
 import com.bookcorner.repository.UserRepository;
 import com.bookcorner.service.BookService;
 import com.bookcorner.service.PersonalBooksService;
+import com.bookcorner.service.UserService;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,16 +24,18 @@ public class ProfileRegister {
     private final PersonalBooksService personalBooksService;
     private final BookService bookService;
     private final UserRepository userRepository;
+    private final UserService userService;
 
 
-    public ProfileRegister(PersonalBooksService personalBooksService, BookService bookService, UserRepository userRepository) {
+    public ProfileRegister(PersonalBooksService personalBooksService, BookService bookService, UserRepository userRepository, UserService userService) {
         this.personalBooksService = personalBooksService;
         this.bookService = bookService;
         this.userRepository = userRepository;
+        this.userService = userService;
     }
 
     @GetMapping
-    public String getProfilePage(Model model, Authentication authentication){
+    public String getProfilePage(Model model, Authentication authentication, HttpServletRequest req){
 //        User user = (User) request.getSession().getAttribute("user");
         User user = (User) authentication.getPrincipal();
 
@@ -49,6 +52,7 @@ public class ProfileRegister {
         model.addAttribute("wishlist", wishlist);
         model.addAttribute("currentlyReading", currentlyReading);
         model.addAttribute("readBooks", readBooks);
+        model.addAttribute("user",req.getRemoteUser());
         return "profile";
     }
 

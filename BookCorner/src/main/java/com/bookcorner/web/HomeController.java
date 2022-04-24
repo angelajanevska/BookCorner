@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("")
+@RequestMapping("/")
 public class HomeController {
     private final BookService bookService;
     private final PersonalBooksService personalBooksService;
@@ -27,10 +27,10 @@ public class HomeController {
         this.userService = userService;
     }
 
-    @GetMapping
+    @GetMapping("/")
     public String getHomePage(Model model) {
         model.addAttribute("books", bookService.findAll().subList(0,6));
-        return "index";
+        return "home";
 //        return "header";
     }
 
@@ -54,6 +54,4 @@ public class HomeController {
     public String getContactUs(){
         return "contact";
     }
-
-
 }

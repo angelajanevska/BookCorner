@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
+<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -87,7 +87,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand logo" href="index.html">
+            <a class="navbar-brand logo" href="index-page.html">
                 <img th:src="@{../static/images/logo-yellow.png}" alt="">
             </a>
         </div>
@@ -127,7 +127,7 @@
     <div class="container">
         <div class="row">
             <div class="title text-center">
-                <h2>Your Profile</h2>
+                <h2 th:text="${user}"></h2>
             </div>
             <div class="col-md-4">
                 <!-- Blog Right Sections
@@ -312,7 +312,7 @@
                 <div class="footer-nav text-center">
                     <div class="col-md-12">
                         <ul>
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="index-page.html">Home</a></li>
                             <li><a href="services.html">Services</a></li>
                             <li><a href="books.html">Portfolio</a></li>
                             <li><a href="#">Our Team</a></li>
