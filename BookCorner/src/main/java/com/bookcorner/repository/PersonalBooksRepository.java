@@ -13,6 +13,9 @@ public interface PersonalBooksRepository extends JpaRepository<PersonalBooks, Lo
 
     Optional<PersonalBooks> findByStatus(BookStatus status);
     Optional<PersonalBooks> findByStatusAndUser(BookStatus status, User user);
+    Optional<PersonalBooks> findAllByUser(User user);
     Optional<PersonalBooks> findByUser(User user);
+
     Optional<PersonalBooks> findByISBN(String isbn);
+    void deleteByISBN(String ISBN);
 }

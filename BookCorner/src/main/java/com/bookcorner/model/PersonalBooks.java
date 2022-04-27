@@ -13,7 +13,6 @@ public class PersonalBooks {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //???? call, ili id da zema od api isbn
     private String ISBN;
 
     @Enumerated(value = EnumType.STRING)

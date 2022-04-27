@@ -19,8 +19,6 @@ public class User implements UserDetails {
     private String email;
     private Date dateOfBirth;
 
-    @OneToMany
-    private List<PersonalBooks> books;
 
     @Enumerated(value = EnumType.STRING)
     private Role role;
@@ -33,7 +31,6 @@ public class User implements UserDetails {
         this.email = email;
         this.dateOfBirth = dateOfBirth;
         this.role = role;
-        this.books = new ArrayList<>();
     }
 
     public User() {

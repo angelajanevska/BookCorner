@@ -24,7 +24,6 @@ public class BookReviewsServiceImpl implements BookReviewsService {
         this.bookReviewsRepository.save(new BookReviews(isbn));
     }
 
-
     @Override
     public List<BookReviews> findAll() {
         return this.bookReviewsRepository.findAll();

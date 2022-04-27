@@ -8,7 +8,6 @@ import com.bookcorner.model.exceptions.PasswordsDoNotMatchException;
 import com.bookcorner.model.exceptions.UsernameAlreadyExistsException;
 import com.bookcorner.repository.UserRepository;
 import com.bookcorner.service.UserService;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -17,8 +16,7 @@ import org.springframework.stereotype.Service;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -50,10 +48,15 @@ public class UserServiceImpl implements UserService {
 
     }
 
+//    @Override
+//    public void updateBooks(PersonalBooks book, String username) {
+//        User user = this.userRepository.findByUsername(username).stream().findFirst().get();
+////        user.getBooks().add(book);
+//    }
+
     @Override
-    public void updateBooks(PersonalBooks book, String username) {
-        User user = this.userRepository.findByUsername(username).stream().findFirst().get();
-//        user.getBooks().add(book);
+    public Optional<User> findByUsername(String username) {
+        return this.userRepository.findByUsername(username);
     }
 
 

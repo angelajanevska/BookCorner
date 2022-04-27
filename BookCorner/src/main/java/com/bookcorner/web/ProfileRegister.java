@@ -35,16 +35,17 @@ public class ProfileRegister {
     }
 
     @GetMapping
-    public String getProfilePage(Model model, Authentication authentication, HttpServletRequest req){
+    public String getProfilePage(Model model, Authentication authentication, HttpServletRequest request){
 //        User user = (User) request.getSession().getAttribute("user");
-        User user = (User) authentication.getPrincipal();
+//        User user = (User) authentication.getPrincipal();
+        User user = userService.findByUsername(request.getRemoteUser()).get();
 
-        System.out.println(this.personalBooksService.findByUser(user));
-        List<PersonalBooks> wishlistISBN = this.personalBooksService.findByUser(user).stream().filter(el -> el.getStatus() == BookStatus.wishlist).collect(Collectors.toList());
-        Optional<PersonalBooks> currentlyReadingISBN = this.personalBooksService.findByStatusAndUser(BookStatus.currently_reading, user);
-        Optional<PersonalBooks> readBooksISBN = this.personalBooksService.findByStatusAndUser(BookStatus.read_book, user);
+        System.out.println(user.getUsername());
+        List<PersonalBooks> wishlistIs = this.personalBooksService.findAll().stream().filter(el -> el.getStatus() == BookStatus.wishlist && el.getUser().getUsername() == user.getUsername()).collect(Collectors.toList());
+        List<PersonalBooks> currentlyReadingISBN = this.personalBooksService.findAll().stream().filter(el -> el.getStatus() == BookStatus.currently_reading && el.getUser().getUsername() == user.getUsername()).collect(Collectors.toList());
+        List<PersonalBooks> readBooksISBN = this.personalBooksService.findAll().stream().filter(el -> el.getStatus() == BookStatus.read_book && el.getUser().getUsername() == user.getUsername()).collect(Collectors.toList());
 
-        List<Book> wishlist = this.bookService.findAll().stream().filter(el -> wishlistISBN.stream().anyMatch(w -> w.getISBN().equals(el.getIsbn()))).collect(Collectors.toList());
+        List<Book> wishlist = this.bookService.findAll().stream().filter(el -> wishlistIs.stream().anyMatch(w -> w.getISBN().equals(el.getIsbn()))).collect(Collectors.toList());
         List<Book> currentlyReading = this.bookService.findAll().stream().filter(el -> currentlyReadingISBN.stream().anyMatch(w -> w.getISBN().equals(el.getIsbn()))).collect(Collectors.toList());
         List<Book> readBooks = this.bookService.findAll().stream().filter(el -> readBooksISBN.stream().anyMatch(w -> w.getISBN().equals(el.getIsbn()))).collect(Collectors.toList());
 
@@ -52,7 +53,7 @@ public class ProfileRegister {
         model.addAttribute("wishlist", wishlist);
         model.addAttribute("currentlyReading", currentlyReading);
         model.addAttribute("readBooks", readBooks);
-        model.addAttribute("user",req.getRemoteUser());
+        model.addAttribute("user",request.getRemoteUser());
         return "profile";
     }
 

@@ -27,4 +27,7 @@ public interface PersonalBooksService {
 
     Optional<PersonalBooks> findByUser(User user);
 
+    Optional<PersonalBooks> findAllByUser(User user);
+
+
 }

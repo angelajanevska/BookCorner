@@ -27,10 +27,10 @@ public class HomeController {
         this.userService = userService;
     }
 
-    @GetMapping("/")
+    @GetMapping
     public String getHomePage(Model model) {
         model.addAttribute("books", bookService.findAll().subList(0,6));
-        return "home";
+        return "books";
 //        return "header";
     }
 
@@ -44,8 +44,8 @@ public class HomeController {
     @PostMapping("/book-wishlist/{isbn}")
     public String addBookToWishlist(@PathVariable String isbn, Authentication authentication){
         User user = (User) authentication.getPrincipal();
-        PersonalBooks book = personalBooksService.save(isbn, BookStatus.wishlist, user, null, null);
-        userService.updateBooks(book, user.getUsername());
+         personalBooksService.save(isbn, BookStatus.wishlist, user, null, null);
+//        userService.updateBooks(book, user.getUsername());
         return "redirect:/books";
 
     }

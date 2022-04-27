@@ -20,7 +20,8 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public void save(String title, String author, String isbn, String release_date, String pages, String coverURL) {
-        this.bookRepository.save(new Book(title,author,isbn,release_date,pages,coverURL));
+        Book book = new Book(title,author,isbn,release_date,pages,coverURL);
+        this.bookRepository.save(book);
     }
 
     @Override
