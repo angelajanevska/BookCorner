@@ -16,18 +16,22 @@
             crossorigin="anonymous"></script>
 
 
-    <link rel="apple-touch-icon" th:href="@{/apple-touch-icon.png}">
-    <link rel="stylesheet" th:href="@{/plugins/bootstrap/bootstrap.min.css}">
-    <!-- ThemeFisher Icon -->
-    <link rel="stylesheet" th:href="@{/plugins/themefisher-fonts/themefisher-fonts.css}">
-    <!-- Light Box -->
-    <link rel="stylesheet" th:href="@{/plugins/magnific-popup/magnific-popup.css}">
-    <!-- animation css -->
-    <link rel="stylesheet" th:href="@{/plugins/animate/animate.css}">
-    <!-- slick slider -->
-    <link rel="stylesheet" th:href="@{/plugins/slick/slick.css}">
+    <link rel="apple-touch-icon" href="../static/apple-touch-icon.png" th:href="@{/apple-touch-icon.png}"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/plugins/bootstrap/bootstrap.min.css"
+          th:href="@{/plugins/bootstrap/bootstrap.min.css}" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/plugins/themefisher-fonts/themefisher-fonts.css"
+          th:href="@{/plugins/themefisher-fonts/themefisher-fonts.css}" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/plugins/magnific-popup/magnific-popup.css"
+          th:href="@{/plugins/magnific-popup/magnific-popup.css}" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/plugins/animate/animate.css" th:href="@{/plugins/animate/animate.css}"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/plugins/slick/slick.css" th:href="@{/plugins/slick/slick.css}"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/plugins/css/style.css}" crossorigin="anonymous">
+    <script src="../static/plugins/modernizr.min.js" th:href="@{/plugins/modernizr.min.js}"
+            crossorigin="anonymous"></script>
 
-    <script th:src="@{/plugins/modernizr.min.js}"></script>
 
     <!-- Revolution Slider -->
     <link rel="stylesheet" th:href="@{/css/style.css}">
@@ -104,7 +108,7 @@
                     <a th:href="@{/profile}">Profile</a>
                 </li>
                 <li class="nav-item" sec:authorize="!isAuthenticated()">
-                    <a th:href="@{/login}" >Log in</a>
+                    <a th:href="@{/login}">Log in</a>
                 </li>
                 <li class="nav-item" sec:authorize="!isAuthenticated()">
                     <a th:href="@{/register}">Register</a>
@@ -145,15 +149,18 @@
 
                                     </div>
                                     <div class="card-body">
-                                        <a href="books-single.html" class="padding-0"><h3 th:text="${book.getTitle()}"></h3></a>
+                                        <a href="books-single.html" class="padding-0"><h3
+                                                th:text="${book.getTitle()}"></h3></a>
                                         <p class="" th:text="${book.author}"></p>
                                         <p class="">Book genre</p>
-                                        <form th:action="@{'/profile/to-currently-reading/{isbn}' (isbn=${book.getIsbn()})}" th:method="POST">
-                                            <button class="btn btn-main" >Start Reading</button>
+                                        <form th:action="@{'/profile/to-currently-reading/{isbn}' (isbn=${book.getIsbn()})}"
+                                              th:method="POST">
+                                            <button class="btn btn-main">Start Reading</button>
                                         </form>
 
-                                        <form th:action="@{'/profile/delete/{isbn}' (isbn=${book.getIsbn()})}" th:method="DELETE">
-                                            <button class="btn btn-main" >Delete from wishlist</button>
+                                        <form th:action="@{'/profile/delete/{isbn}' (isbn=${book.getIsbn()})}"
+                                              th:method="DELETE">
+                                            <button class="btn btn-main">Delete from wishlist</button>
                                         </form>
                                     </div>
                                 </div>
@@ -178,11 +185,13 @@
                                              alt="Portfolio">
                                     </div>
                                     <div class="card-body">
-                                        <a href="books-single.html" class="padding-0"><h3 th:text="${currBook.title}"></h3></a>
+                                        <a href="books-single.html" class="padding-0"><h3
+                                                th:text="${currBook.title}"></h3></a>
                                         <p class="" th:text="${currBook.author}"></p>
                                         <p class="">Book genre</p>
-                                        <form th:action="@{'/profile/to-read-books/{isbn}' (isbn=${currBook.getIsbn()})}" th:method="POST">
-                                            <button class="btn btn-main" >Finished</button>
+                                        <form th:action="@{'/profile/to-read-books/{isbn}' (isbn=${currBook.getIsbn()})}"
+                                              th:method="POST">
+                                            <button class="btn btn-main">Finished</button>
                                         </form>
                                     </div>
                                 </div>
@@ -208,52 +217,40 @@
 
                                     </div>
                                     <div class="card-body">
-                                        <a href="books-single.html" class="padding-0"><h3 th:text="${readbook.title}"></h3></a>
+                                        <a href="books-single.html" class="padding-0"><h3
+                                                th:text="${readbook.title}"></h3></a>
                                         <p class="" th:text="${readbook.author}"></p>
                                         <p class="">Book genre</p>
-<!--                                        <button class="btn btn-main">Start Reading</button>-->
+                                        <!--                                        <button class="btn btn-main">Start Reading</button>-->
                                     </div>
                                 </div>
                             </a>
                         </div>
                     </div>
-                    <div class="related-post widgets">
-                        <div class="list-group">
-                            <div class="list-group-item active text-center">
-                                Related Post
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="blog-sidbar col-md-4">
+                <div class="categories widgets">
+                    <div class="list-group text-center">
+                        <div class="related-post widgets">
+                            <div class="list-group">
+                                <h4 class="list-group-item active text-center">
+                                    Read books per month!
+                                </h4>
+                                <a href="#" class="list-group-item" th:each="stat,iter : ${stats}">
+                                        <div class="media-left media-middle">
+                                            <p class="post-count" th:text="${iter.count}"></p></div>
+                                        <div class="media-body">
+                                            <span>Read books:</span>
+                                            <h5 style="display: inline-block" th:text="${stat}"></h5>
+                                        </div>
+
+                                </a>
+
                             </div>
-                            <a href="#" class="list-group-item">
-                                <div class="media">
-                                    <div class="media-left media-middle"><p class="post-count">1</p></div>
-                                    <div class="media-body">
-                                        <p>Typography is important fact for liusto odio dolore.</p>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <div class="media">
-                                    <div class="media-left media-middle"><p class="post-count">2</p></div>
-                                    <div class="media-body">
-                                        <p>Typography is important fact for liusto odio dolore.</p>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <div class="media">
-                                    <div class="media-left media-middle"><p class="post-count">3</p></div>
-                                    <div class="media-body">
-                                        <p>Typography is important fact for liusto odio dolore.</p>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <div class="media">
-                                    <div class="media-left media-middle"><p class="post-count">4</p></div>
-                                    <div class="media-body">
-                                        <p>Typography is important fact for liusto odio dolore.</p>
-                                    </div>
-                                </div>
-                            </a>
                         </div>
                     </div>
                 </div>
@@ -333,21 +330,16 @@
     </div>
 </footer>
 
-<script th:src="@{/plugins/jquery.min.js}"></script>
-
-<script th:src="@{/plugins/bootstrap/bootstrap.min.js}"></script>
-<!-- slick slider -->
-<script th:src="@{/plugins/slick/slick.min.js}"></script>
-<!-- filter -->
-<script th:src="@{/plugins/filterizr/jquery.filterizr.min.js}"></script>
-<!-- Lightbox -->
-<script th:src="@{/plugins/magnific-popup/jquery.magnific-popup.min.js}"></script>
-<!-- Parallax -->
-<script th:src="@{/plugins/parallax.min.js}"></script>
-<!-- Video -->
-<script th:src="@{/plugins/jquery.vide.js}"></script>
-
-<script th:src="@{/js/script.js}"></script>
+<script src="../static/plugins/jquery.min.js" th:src="@{/plugins/jquery.min.js}"></script>
+<script src="../static/plugins/bootstrap/bootstrap.min.js" th:src="@{/plugins/bootstrap/bootstrap.min.js}"></script>
+<script src="../static/plugins/slick/slick.min.js" th:src="@{/plugins/slick/slick.min.js}"></script>
+<script src="../static/plugins/filterizr/jquery.filterizr.min.js"
+        th:src="@{/plugins/filterizr/jquery.filterizr.min.js}"></script>
+<script src="../static/plugins/magnific-popup/jquery.magnific-popup.min.js"
+        th:src="@{/plugins/magnific-popup/jquery.magnific-popup.min.js}"></script>
+<script src="../static/plugins/parallax.min.js" th:src="@{/plugins/parallax.min.js}"></script>
+<script src="../static/plugins/jquery.vide.js" th:src="@{/plugins/jquery.vide.js}"></script>
+<script src="../static/js/script.js" th:src="@{/js/script.js}"></script>
 </body>
 
 </html>

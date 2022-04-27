@@ -5,13 +5,12 @@ import com.bookcorner.model.PersonalBooks;
 import com.bookcorner.model.Quotes;
 import com.bookcorner.model.User;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
 public interface PersonalBooksService {
     List<PersonalBooks> findAll();
-
-    Optional<PersonalBooks> findByStatus();
 
     PersonalBooks save(String bookApi, BookStatus status, User user, Integer current_page, List<Quotes> favorite_quotes);
 
@@ -19,7 +18,7 @@ public interface PersonalBooksService {
 
     Optional<PersonalBooks> findByStatusAndUser(BookStatus status, User user);
 
-    void editStatus(String isbn, BookStatus status);
+    void editStatus(String isbn, BookStatus status, LocalDate finishedBookDate);
 
     void deleteFromWishlist(String isbn);
 

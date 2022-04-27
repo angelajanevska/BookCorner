@@ -9,6 +9,7 @@ import com.bookcorner.repository.PersonalBooksRepository;
 import com.bookcorner.service.PersonalBooksService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,11 +24,6 @@ public class PersonalBooksServiceImpl implements PersonalBooksService {
     @Override
     public List<PersonalBooks> findAll() {
         return this.personalBooksRepository.findAll();
-    }
-
-    @Override
-    public Optional<PersonalBooks> findByStatus() {
-        return Optional.empty();
     }
 
     @Override
@@ -47,9 +43,10 @@ public class PersonalBooksServiceImpl implements PersonalBooksService {
     }
 
     @Override
-    public void editStatus(String isbn, BookStatus status) {
+    public void editStatus(String isbn, BookStatus status, LocalDate finishedBookDate) {
         PersonalBooks book = this.personalBooksRepository.findByISBN(isbn).orElseThrow();
         book.setStatus(status);
+        book.setFinishedBookDate(finishedBookDate);
         this.personalBooksRepository.save(book);
     }
 
