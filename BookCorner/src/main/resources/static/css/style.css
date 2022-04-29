@@ -1,14 +1,4 @@
-/* Font Familys */
-/* Themefisher Colors */
-/* Header bg */
-/*team overlay bg color */
-/* Service section bg */
-/* blog slider pagination img */
-/*----------  
- 	Google fonts  
- ----------*/
 @import url("https://fonts.googleapis.com/css?family=Lora:400,700|Playfair+Display:400,400i,700,700i,900,900i|Poppins:300,400,500,600,700|Roboto:300,400,500,700");
-/* Global Body Style */
 body {
   color: #fff;
   background: #111111;
@@ -18,7 +8,6 @@ body {
   -moz-font-smoothing: antialiased;
 }
 
-/* Heading Fonts Size */
 h1, h2, h3 {
   font-family: "Playfair Display", serif;
   color: #facd8a;
@@ -52,9 +41,6 @@ p {
   font-family: "Roboto", sans-serif;
 }
 
-/*---------- --------------
-	Themefisher help file
----------------------------*/
 a, .th-nav-btn, .btn {
   text-decoration: none;
 }
@@ -78,12 +64,10 @@ button:hover, button:focus {
   outline: none;
 }
 
-/* Display Style */
 .flex {
   display: flex;
 }
 
-/* Padding */
 .padding-0 {
   padding: 0;
 }
@@ -92,7 +76,6 @@ button:hover, button:focus {
   margin: 0 !important;
 }
 
-/* Themefisher Button effect */
 .btn-main {
   border-radius: 0;
   background: #facd8a;
@@ -111,8 +94,6 @@ button:hover, button:focus {
   background: #fff;
 }
 
-/**/
-/* mouse hover effect */
 .hover-in {
   transition: .3s ease-out;
 }
@@ -121,7 +102,6 @@ button:hover, button:focus {
   transition: .3s ease-in;
 }
 
-/* Media Link */
 .media-link a {
   color: #212121;
   display: inline-block;
@@ -130,7 +110,6 @@ button:hover, button:focus {
   transition: 0.5s;
 }
 
-/* MixIt Up */
 #Container .mix {
   display: none;
 }
@@ -140,12 +119,10 @@ button:hover, button:focus {
   height: 660px;
 }
 
-/* Full page video and popup video overrite */
 .fp-enabled body, html.fp-enabled {
   overflow: auto !important;
 }
 
-/* Solid text btn */
 .solid-btn {
   background: transparent;
   padding: 0;
@@ -164,7 +141,6 @@ button:hover, button:focus {
   background: #171717;
 }
 
-/* Search bar */
 .search {
   padding: 20px 10px;
 }
@@ -237,7 +213,6 @@ button:hover, button:focus {
   align-items: center;
 }
 
-/* slick dots */
 .slick-dots {
   padding-left: 0;
   text-align: center;
@@ -269,14 +244,6 @@ button:hover, button:focus {
 .slick-dots li.slick-active button {
   background: #facd8a;
 }
-
-/* /slick dots */
-/**
- * ---------------------------------------------------------------------------
- * 0?. Header Styles
- * ---------------------------------------------------------------------------
- */
-/*logo style*/
 .navigation {
   background: rgba(0, 0, 0, 0.73) none repeat scroll 0 0;
   margin-bottom: 0;
@@ -330,35 +297,31 @@ button:hover, button:focus {
   background: transparent;
 }
 
-/* Home Page */
+
 .header.main {
   background: url(../images/header/banner-img.jpg) no-repeat;
   background-size: cover;
   background-position: center;
 }
 
-/* Services Page */
 .header.main.services-header {
   background: url(../images/header/services-folding-img.jpg) no-repeat;
   background-size: cover;
   background-position: center;
 }
 
-/* Portfolio Page */
 .header.main.portfolio-header {
   background: url(../images/header/portfolio-folding-img.jpg) no-repeat;
   background-size: cover;
   background-position: center;
 }
 
-/* Blog Page */
 .header.main.blog-header {
   background: url(../images/header/blog-folding-img.jpg) no-repeat;
   background-size: cover;
   background-position: center;
 }
 
-/* Contact Page */
 .header.main.contact-header {
   background: url(../images/header/contact-folding-img.jpg) no-repeat;
   background-size: cover;
@@ -592,11 +555,7 @@ div.loading {
   }
 }
 
-/**
- * ---------------------------------------------------------------------------
- * 0?. Footer Styles
- * ---------------------------------------------------------------------------
- */
+
 .footer {
   padding: 65px 0 40px;
   background: #111111;
@@ -609,14 +568,12 @@ div.loading {
   display: block;
 }
 
-/* footer title section */
 .footer-title {
   font-family: "Poppins", sans-serif;
   text-transform: uppercase;
   padding-bottom: 40px;
 }
 
-/* footer nav section style */
 .footer-nav ul {
   padding: 49px 0 50px;
 }
@@ -674,7 +631,6 @@ div.loading {
   color: #facd8a;
 }
 
-/* Footer Media Link */
 .footer-media-link li {
   display: inline-block;
 }
@@ -708,11 +664,6 @@ div.loading {
   display: inline-block;
 }
 
-/* Home page style
-====================== */
-/**********************************************
- Case Study Style
-***********************************************/
 .case-study {
   background: #171717;
 }
@@ -735,7 +686,6 @@ div.loading {
   margin-top: 30px;
 }
 
-/* Case Study Title */
 .box-subtitle,
 .box-title {
   margin: 0;
@@ -748,7 +698,6 @@ div.loading {
   text-transform: uppercase;
 }
 
-/* Case Study Description Style */
 .case-study-content {
   padding-top: 58px;
   padding-bottom: 90px;
@@ -760,9 +709,7 @@ div.loading {
   background: #121212;
 }
 
-/**********************************************
- Clients Logo Style
-***********************************************/
+
 .clients-logo {
   padding: 100px 0;
   background-attachment: fixed;
@@ -787,11 +734,6 @@ div.loading {
   -webkit-filter: invert(1);
 }
 
-/**
- * ---------------------------------------------------------------------------
- * . Header Styles
- * ---------------------------------------------------------------------------
- */
 .hero-area {
   height: 100vh;
   background-size: cover;
@@ -869,7 +811,6 @@ div.loading {
   right: 0;
 }
 
-/* slick style */
 .slick-slide {
   outline: 0;
 }
@@ -878,7 +819,6 @@ div.loading {
   display: unset;
 }
 
-/* slick arrows */
 .slick-arrow {
   position: absolute;
   top: 50%;
@@ -955,10 +895,7 @@ div.loading {
   left: 20px;
 }
 
-/* /slick arrows */
-/**********************************************
- Contact Action
-***********************************************/
+
 .contact-call-to-action {
   position: relative;
   background: #171717;
@@ -993,9 +930,7 @@ div.loading {
   background: linear-gradient(90deg, black 30%, rgba(0, 0, 0, 0.51) 47%, rgba(192, 192, 192, 0.15) 61%);
 }
 
-/**********************************************
- Pricing Style
-***********************************************/
+
 .pricing-table {
   background: #191919;
   padding-bottom: 65px;
@@ -1143,9 +1078,6 @@ hr.hr-border {
   -webkit-transform: scale(1);
 }
 
-/**********************************************
- Team Style
-***********************************************/
 .team {
   padding: 65px 0 0;
   background: #0f0f0f;
@@ -1160,7 +1092,6 @@ hr.hr-border {
   width: 100%;
 }
 
-/* Team Overlay Style */
 .overlay {
   position: absolute;
   top: 0;
@@ -1225,16 +1156,11 @@ hr.hr-border {
   font-size: 22px;
 }
 
-/* Join Team Button */
 .join-team {
   padding: 65px 0;
 }
 
-/* Services page style
-====================== */
-/**********************************************
- Services Style
-***********************************************/
+
 .services {
   background: #171717;
   padding: 53px 0 9px;
@@ -1328,11 +1254,6 @@ hr.hr-border {
   position: relative;
 }
 
-/* testimonials page style
-====================== */
-/**********************************************
- Clients Style
-***********************************************/
 .clients.main {
   background: url(../images/home/clients-logo-bg-2.jpg) no-repeat;
   background-size: cover;
@@ -1476,12 +1397,6 @@ hr.hr-border {
   font-family: "Poppins", sans-serif;
 }
 
-/* Portfolio Page and 
-   Portfolio Single Page style
-================================= */
-/**********************************************
- Portfolio Style
-***********************************************/
 .portfolio {
   padding: 60px 0 65px;
   background: #171717;
@@ -1600,9 +1515,6 @@ hr.hr-border {
   transition: 0.5s;
 }
 
-/**********************************************
- Portfolio Single Style
-***********************************************/
 .portfolio-single {
   background: #171717;
   padding: 75px 0 0;
@@ -1681,9 +1593,6 @@ hr.hr-border {
   color: #171717;
 }
 
-/**********************************************
- Gallery Style
-***********************************************/
 .gallery {
   background: #171717;
   padding: 60px 0;
@@ -1740,11 +1649,6 @@ hr.hr-border {
           transform: translate(-50%, -50%);
 }
 
-/* blog page style
-====================== */
-/**********************************************
- Blog Style
-***********************************************/
 .blog {
   background: #171717;
   padding: 60px 0;
@@ -1825,7 +1729,6 @@ hr.hr-border {
   max-width: 550px;
 }
 
-/* Blog Right side Content */
 .blog-content-left .blog-content-area,
 .blog-content-left .blog-img {
   float: right;
@@ -1836,7 +1739,6 @@ hr.hr-border {
   left: -200px;
 }
 
-/* Blog Video Section */
 .video-section {
   position: relative;
   max-width: 550px;
@@ -1876,7 +1778,6 @@ hr.hr-border {
   color: #fff;
 }
 
-/* See all post btn */
 .see-all-post {
   padding: 15px 0;
 }
@@ -1928,8 +1829,7 @@ hr.hr-border {
   margin-bottom: 15px;
 }
 
-/* Single Blog Style
-====================== */
+
 .blog-single {
   color: #171717;
   background: #171717;
@@ -1940,8 +1840,6 @@ hr.hr-border {
   width: 100%;
 }
 
-/* Blog Single Content Section
-============================== */
 .blog-single-content {
   padding: 46px 100px 0 0;
 }
@@ -1982,8 +1880,6 @@ hr.hr-border {
   padding-bottom: 16px;
 }
 
-/* Blog Comments Section
-========================= */
 .comments-title {
   margin: 0;
   color: #facd8a;
@@ -2055,8 +1951,6 @@ hr.hr-border {
   background: #fff;
 }
 
-/* Blog Single Form
-====================== */
 .blog-form-input,
 .blog-form-textarea {
   border-radius: 0;
@@ -2091,8 +1985,6 @@ form .padding-left-15 {
   padding-bottom: 0;
 }
 
-/* Contact page style
-====================== */
 .contact-form {
   padding: 56px 0 60px;
 }
@@ -2119,7 +2011,7 @@ form .padding-left-15 {
   height: 240px;
 }
 
-/* Map Section */
+
 .contact-map {
   position: relative;
   overflow: hidden;
@@ -2202,12 +2094,7 @@ form .padding-left-15 {
   background: #171717;
 }
 
-/**
- * ---------------------------------------------------------------------------
- * 0?. Responsive Styles
- * ---------------------------------------------------------------------------
- */
-/* Select 1px to 992px devices */
+
 @media only screen and (min-width: 1px) and (max-width: 992px) {
   .navigation .navbar-toggle span {
     background: #fff;
@@ -2215,7 +2102,6 @@ form .padding-left-15 {
   .hero-area h1 {
     font-size: 35px;
   }
-  /* Case Study */
   .box-title {
     margin-bottom: 10px;
     padding-bottom: 10px;
@@ -2251,7 +2137,6 @@ form .padding-left-15 {
   .th-normal {
     padding: 40% 0;
   }
-  /* Clients Section style */
   .owl-buttons .owl-prev {
     left: 0;
   }
@@ -2267,14 +2152,12 @@ form .padding-left-15 {
   .clients-description {
     padding: 30px 19px;
   }
-  /* Client Logo Section */
   .clients-logo {
     padding: 20px 0;
   }
   .client-logo {
     padding: 20px;
   }
-  /* Team section */
   .th-mouse-effect-card {
     position: relative;
   }
@@ -2288,7 +2171,6 @@ form .padding-left-15 {
     -webkit-transform: translateY(-50%);
             transform: translateY(-50%);
   }
-  /* contact-us */
   .contact-us {
     text-align: center;
   }
@@ -2306,9 +2188,7 @@ form .padding-left-15 {
     background: #111111;
     padding: 20px 0;
   }
-  /* ==================
-	Portfolio Single Page 
-	===================== */
+
   .protfolio-mixitup-btn .th-btn {
     display: block;
     margin: 0 auto 20px;
@@ -2332,9 +2212,7 @@ form .padding-left-15 {
   .gallery-description p {
     padding: 0 15px 60px;
   }
-  /* ==================
-	blog Page 
-	===================== */
+
   .blog {
     padding: 20px 0;
   }
@@ -2359,9 +2237,7 @@ form .padding-left-15 {
     text-align: center;
     padding: 23px 20px;
   }
-  /* ==================
-	Contact Page 
-	===================== */
+
   .contact-info {
     position: static;
     padding: 30px 0 0;
@@ -2380,7 +2256,6 @@ form .padding-left-15 {
   .th-textarea {
     margin-top: 30px;
   }
-  /* Footer section */
   footer {
     padding: 20px 0;
     text-align: center;
@@ -2413,8 +2288,7 @@ form .padding-left-15 {
     padding: 0 15px;
     display: inline-block;
   }
-  /* Blog page
-	============= */
+
   .video-section {
     max-width: 100%;
     width: 100%;
@@ -2451,15 +2325,11 @@ form .padding-left-15 {
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1024px) {
-  /* case study page
-	============= */
-  /* portfolio 
-	============= */
+
   .portfolio-single-info {
     padding: 20px;
   }
-  /* Blog page
-	============= */
+
   .blog-content {
     right: -165px;
   }
@@ -2475,7 +2345,6 @@ form .padding-left-15 {
   }
 }
 
-/* Extra Small Devices, Phones */
 @media only screen and (min-width: 320px) and (max-width: 768px) {
   .protfolio-list .colon {
     display: none;
@@ -2491,12 +2360,10 @@ form .padding-left-15 {
   .contact-content {
     padding: 4%;
   }
-  /* case study section */
   .case-study-content img {
     float: none;
     width: 100%;
   }
-  /* Blog Single Page */
   .blog-single-content {
     padding: 46px 0 0 0;
   }
@@ -2531,7 +2398,6 @@ form .padding-left-15 {
   }
 }
 
-/* Small Devices, Tablets */
 @media only screen and (min-width: 768px) {
   .logo {
     left: 80px;
@@ -2566,7 +2432,3 @@ form .padding-left-15 {
   }
 }
 
-/* Medium Devices, Desktops */
-/* Large Devices, Wide Screens */
-
-/*# sourceMappingURL=maps/style.css.map */
