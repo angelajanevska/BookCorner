@@ -183,9 +183,12 @@
           <div class="row d-flex justify-content-center">
               <!--Book gallery item-->
               <div th:each="book : ${books}" class="col-md-2 col-sm-6 col-xs-12 book-item">
-                  <img class="book-image" th:src="${book.getCoverURL()}" alt="Portfolio">
+                  <img class="book-image" th:src="${book.getCoverURL()}" >
                   <div>
-                      <a href="books-single.html"><h3 th:text="${book.title}"></h3></a>
+<!--                      <form th:action="@{'book/{isbn}' (isbn=${book.getIsbn()})}" th:method="POST">-->
+<!--                          <button class="btn btn-main" >Add to wishlist</button>-->
+                      <a  th:href="@{'book/{isbn}' (isbn=${book.getIsbn()})}" th:method="GET"><h3 th:text="${book.title}"></h3></a>
+<!--                      </form>-->
                       <p class="" th:text="${book.author}"></p>
                       <p class="">Book genre</p>
                       <form th:action="@{'book-wishlist/{isbn}' (isbn=${book.getIsbn()})}" th:method="POST">

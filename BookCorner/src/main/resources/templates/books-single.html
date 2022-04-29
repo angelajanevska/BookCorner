@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="zxx">
+<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -10,21 +10,21 @@
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-      <link rel="apple-touch-icon" href="../static/images/apple-touch-icon.png">
-      <!-- Place favicon.ico in the root directory -->
-
-      <link rel="stylesheet" href="../static/plugins/bootstrap/bootstrap.min.css">
+      <link rel="apple-touch-icon" th:href="@{/images/apple-touch-icon.png}">
+      <link rel="stylesheet" th:href="@{/plugins/bootstrap/bootstrap.min.css}">
       <!-- ThemeFisher Icon -->
-      <link rel="stylesheet" href="../static/plugins/themefisher-fonts/themefisher-fonts.css">
+      <link rel="stylesheet" th:href="@{/plugins/themefisher-fonts/themefisher-fonts.css}">
       <!-- Light Box -->
-      <link rel="stylesheet" href="../static/plugins/magnific-popup/magnific-popup.css">
+      <link rel="stylesheet" th:href="@{/plugins/magnific-popup/magnific-popup.css}">
       <!-- animation css -->
-      <link rel="stylesheet" href="../static/plugins/animate/animate.css">
+      <link rel="stylesheet" th:href="@{/plugins/animate/animate.css}">
       <!-- slick slider -->
-      <link rel="stylesheet" href="../static/plugins/slick/slick.css">
+      <link rel="stylesheet" th:href="@{/plugins/slick/slick.css}">
+
+      <script th:src="@{/plugins/modernizr.min.js}"></script>
 
       <!-- Revolution Slider -->
-      <link rel="stylesheet" href="../static/css/style.css">
+      <link rel="stylesheet" th:href="@{/css/style.css}">
 
     <style>
       /* Always set the map height explicitly to define the size of the div
@@ -42,9 +42,11 @@
           margin-top: 100px;
           margin-bottom: 100px;
       }
+      .portfolio-single img{
+          width: 60%;
+      }
       /* Optional: Makes the sample page fill the window. */
     </style>
-    <script src="../staticplugins/modernizr.min.js"></script>
   </head>
   <body>
     <!--[if lt IE 8]>
@@ -89,32 +91,29 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand logo" href="index-page.html">
-                    <img src="../static/images/logo-yellow.png" alt="">
+                    <img th:src="@{/images/logo-yellow.png}" alt="">
                 </a>
             </div>
 
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav navbar-right menu">
                     <li class="nav-item">
-                        <a href="index-page.html">Home</a>
+                        <a th:href="@{/}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="services.html">Service</a>
+                        <a th:href="@{/books}">Books</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="books.html">Portfolio</a>
+                    <li class="nav-item" sec:authorize="isAuthenticated()">
+                        <a th:href="@{/profile}">Profile</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="profile.html">Blog</a>
+                    <li class="nav-item" sec:authorize="!isAuthenticated()">
+                        <a th:href="@{/login}" >Log in</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="contact.html">Contact</a>
+                    <li class="nav-item" sec:authorize="!isAuthenticated()">
+                        <a th:href="@{/register}">Register</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="">Log in</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="">Register</a>
+                    <li class="nav-item" sec:authorize="isAuthenticated()">
+                        <a th:href="@{/logout}">Log out</a>
                     </li>
                 </ul>
                 <!-- Left links -->
@@ -131,36 +130,32 @@
     <div class="container-fluid padding-0">
       <div class="row margin-0">
         <div class="flex">
-          <div class="col-md-12 col-lg-6  padding-0"><br>
-            <img src="../static/images/portfolio/single-portfolio-img1.jpg" alt="">
+          <div class="col-md-12 col-lg-5 flex justify-content-center pr-50"><br>
+              <img class="book-image" width="400px" th:src="${book.getCoverURL()}" alt="Book cover">
           </div>
-          <div class="col-md-12 col-lg-6 portfolio-single-description padding-0">
+          <div class="col-md-12 col-lg-7 portfolio-single-description padding-0">
             <div class="portfolio-single-info">
-              <h2 class="portfolio-title">Book title</h2><hr>
+              <h2 class="portfolio-title" th:text="${book.getTitle()}"></h2><hr>
               <div class="row margin-0">
                 <div class="col-md-12 protfolio-list padding-0">
                   <div class="col-md-4 col-sm-6 padding-0"><p>ISBN</p></div>
-                  <div class="col-md-8 col-sm-6 padding-0"><span class="colon">:</span><p>9783161484100</p></div>
+                  <div class="col-md-8 col-sm-6 padding-0"><span class="colon">:</span><p th:text="${book.getIsbn()}"></p></div>
                 </div>
                 <div class="col-md-12 protfolio-list padding-0">
                   <div class="col-md-4 col-sm-6 padding-0"><p>AUTHOR</p></div>
-                  <div class="col-md-8 col-sm-6 padding-0"><span class="colon">:</span><p>Mamur Beta.</p></div>
+                  <div class="col-md-8 col-sm-6 padding-0"><span class="colon">:</span><p th:text="${book.getAuthor()}"></p></div>
                 </div>
                 <div class="col-md-12 protfolio-list padding-0">
                   <div class="col-md-4 col-sm-6 padding-0"><p>GENRE</p></div>
-                  <div class="col-md-8 col-sm-6 padding-0"><span class="colon">:</span><a class="web-addres" href="#" target="_blank">Comedy</a></div>
+                  <div class="col-md-8 col-sm-6 padding-0"><span class="colon">:</span><a class="web-addres" href="#" target="_blank">/</a></div>
                 </div>
                   <div class="col-md-12 protfolio-list padding-0">
                       <div class="col-md-4 col-sm-6 padding-0"><p>LANGUAGE</p></div>
                       <div class="col-md-8 col-sm-6 padding-0"><span class="colon">:</span><p>English</p></div>
                   </div>
                   <div class="col-md-12 protfolio-list padding-0">
-                      <div class="col-md-4 col-sm-6 padding-0"><p>PUBLISHER</p></div>
-                      <div class="col-md-8 col-sm-6 padding-0"><span class="colon">:</span><p>Mamur Beta.</p></div>
-                  </div>
-                  <div class="col-md-12 protfolio-list padding-0">
                       <div class="col-md-4 col-sm-6 padding-0"><p>NUMBER OF PAGES</p></div>
-                      <div class="col-md-8 col-sm-6 padding-0"><span class="colon">:</span><p>567</p></div>
+                      <div class="col-md-8 col-sm-6 padding-0"><span class="colon">:</span><p>/</p></div>
                   </div>
               </div>
             </div>
@@ -218,7 +213,7 @@
                 <div class="d-flex justify-content-center">
                     <!--Book gallery item-->
                     <div class="col-md-2 col-sm-6 col-xs-12 book-item">
-                        <img class="book-image" src="../static/images/portfolio/portfolio-img1.jpg" alt="Portfolio">
+                        <img class="book-image" th:src="@{images/portfolio/portfolio-img1.jpg}" alt="Portfolio">
                         <div>
                             <a href="books-single.html"><h3>Book title</h3></a>
                             <p class="">Book author</p>
@@ -230,7 +225,7 @@
                     </div>
                     <!--Book gallery item-->
                     <div class="col-md-2 col-sm-6 col-xs-12 book-item">
-                        <img class="book-image" src="../static/images/portfolio/portfolio-img1.jpg" alt="Portfolio">
+                        <img class="book-image" th:src="@{images/portfolio/portfolio-img1.jpg}" alt="Portfolio">
                         <div>
                             <a href="books-single.html"><h3>Book title</h3></a>
                             <p class="">Book author</p>
@@ -242,7 +237,7 @@
                     </div>
                     <!--Book gallery item-->
                     <div class="col-md-2 col-sm-6 col-xs-12 book-item">
-                        <img class="book-image" src="../static/images/portfolio/portfolio-img1.jpg" alt="Portfolio">
+                        <img class="book-image" th:src="@{images/portfolio/portfolio-img1.jpg}" alt="Portfolio">
                         <div>
                             <a href="books-single.html"><h3>Book title</h3></a>
                             <p class="">Book author</p>
@@ -254,7 +249,7 @@
                     </div>
                     <!--Book gallery item-->
                     <div class="col-md-2 col-sm-6 col-xs-12 book-item">
-                        <img class="book-image" src="../static/images/portfolio/portfolio-img1.jpg" alt="Portfolio">
+                        <img class="book-image" th:src="@{images/portfolio/portfolio-img1.jpg}" alt="Portfolio">
                         <div>
                             <a href="books-single.html"><h3>Book title</h3></a>
                             <p class="">Book author</p>
@@ -339,24 +334,21 @@
         </div>
     </footer>
 
-    <script src="../static/plugins/jquery.min.js"></script>
+    <script th:src="@{/plugins/jquery.min.js}"></script>
 
-    <script src="../static/plugins/bootstrap/bootstrap.min.js"></script>
+    <script th:src="@{/plugins/bootstrap/bootstrap.min.js}"></script>
     <!-- slick slider -->
-    <script src="../static/plugins/slick/slick.min.js"></script>
+    <script th:src="@{/plugins/slick/slick.min.js}"></script>
     <!-- filter -->
-    <script src="../static/plugins/filterizr/jquery.filterizr.min.js"></script>
+    <script th:src="@{/plugins/filterizr/jquery.filterizr.min.js}"></script>
     <!-- Lightbox -->
-    <script src="../static/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script th:src="@{/plugins/magnific-popup/jquery.magnific-popup.min.js}"></script>
     <!-- Parallax -->
-    <script src="../static/plugins/parallax.min.js"></script>
+    <script th:src="@{/plugins/parallax.min.js}"></script>
     <!-- Video -->
-    <script src="../static/plugins/jquery.vide.js"></script>
-    <!-- google map -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu5nZKbeK-WHQ70oqOWo-_4VmwOwKP9YQ"></script>
-    <script src="../static/plugins/google-map/gmap.js"></script>
+    <script th:src="@{/plugins/jquery.vide.js}"></script>
 
-    <script src="../static/js/script.js"></script>
+    <script th:src="@{/js/script.js}"></script>
     </body>
 
     </html>
