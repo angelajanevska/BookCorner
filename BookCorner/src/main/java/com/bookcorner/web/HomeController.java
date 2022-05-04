@@ -30,13 +30,14 @@ public class HomeController {
     @GetMapping
     public String getHomePage(Model model) {
         model.addAttribute("books", bookService.findAll().subList(0,6));
-        return "books";
+        return "index-page";
 //        return "header";
     }
 
     @GetMapping("/books")
     public String getBooksPage(Model model) {
-        model.addAttribute("books", bookService.findAll().subList(0,20));
+        model.addAttribute("books", this.bookService.findAll().subList(0,20));
+        model.addAttribute("topBook", this.bookService.highestRated());
         return "books";
 //        return "header";
     }

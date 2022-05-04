@@ -150,13 +150,29 @@
                   <div class="col-md-8 col-sm-6 padding-0"><span class="colon">:</span><a class="web-addres" href="#" target="_blank">/</a></div>
                 </div>
                   <div class="col-md-12 protfolio-list padding-0">
-                      <div class="col-md-4 col-sm-6 padding-0"><p>LANGUAGE</p></div>
-                      <div class="col-md-8 col-sm-6 padding-0"><span class="colon">:</span><p>English</p></div>
-                  </div>
-                  <div class="col-md-12 protfolio-list padding-0">
                       <div class="col-md-4 col-sm-6 padding-0"><p>NUMBER OF PAGES</p></div>
                       <div class="col-md-8 col-sm-6 padding-0"><span class="colon">:</span><p>/</p></div>
                   </div>
+                  <div class="col-md-12 protfolio-list padding-0">
+                          <div class="col-md-4 col-sm-6 padding-0"><p>Rating</p></div>
+                      <div class="col-md-8 col-sm-6 padding-0"><span class="colon">:</span><p th:text="${allReviews}"></p></div>
+                  </div>
+                  <th:block sec:authorize="hasRole('ROLE_PREMIUM')">
+                  <div class="col-md-12 protfolio-list padding-0">
+                      <form method="POST" th:action="@{'/book/addRating/{isbn}' (isbn=${book.getIsbn()})}" class="mt-5">
+                          <div class="form-group">
+                              <p><label>Rate this book: </label></p>
+                              <div th:each="rat : ${ratings}">
+                                  <div class="custom-control custom-radio custom-control-inline" style="display: inline-block">
+                                      <input type="radio" name="rate" th:value="${rat.getRating()}" class="custom-control-input">
+                                      <label class="custom-control-label" th:for="${rat.id}" th:text="${rat.getRating()}"></label>
+                                  </div>
+                              </div>
+                          </div>
+                          <button class="btn btn-main" type="submit">Submit</button>
+                      </form>
+                  </div>
+                  </th:block>
               </div>
             </div>
           </div>

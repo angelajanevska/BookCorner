@@ -14,4 +14,8 @@ public interface BookReviewsService {
 
     void addReviewToBook(String ISBN, Integer rating);
 //    Optional<Book> findByISBN(String title);
+
+    Double getRating(String isbn);
+
+
 }

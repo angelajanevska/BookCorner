@@ -1,12 +1,11 @@
 package com.bookcorner.data;
 
-import com.bookcorner.model.Book;
-import com.bookcorner.model.Rating;
-import com.bookcorner.model.Role;
-import com.bookcorner.model.User;
+import com.bookcorner.model.*;
 import com.bookcorner.repository.BookRepository;
+import com.bookcorner.repository.BookReviewsRepository;
 import com.bookcorner.repository.RatingRepository;
 import com.bookcorner.repository.UserRepository;
+import com.bookcorner.service.BookReviewsService;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 import lombok.Getter;
@@ -29,13 +28,19 @@ public class DataHolder {
     private final RatingRepository ratingRepository;
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final BookReviewsRepository bookReviewsRepository;
+    private final BookReviewsService bookReviewsService;
+
     List<Book> books = new ArrayList<>();
 
-    public DataHolder(BookRepository bookRepository, RatingRepository ratingRepository, UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public DataHolder(BookRepository bookRepository, RatingRepository ratingRepository, UserRepository userRepository, PasswordEncoder passwordEncoder, BookReviewsRepository reviewsRepository, BookReviewsService bookReviewsService) {
         this.bookRepository = bookRepository;
         this.ratingRepository = ratingRepository;
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.bookReviewsRepository = reviewsRepository;
+
+        this.bookReviewsService = bookReviewsService;
     }
 
     @PostConstruct
@@ -50,6 +55,8 @@ public class DataHolder {
             if(barData[18].contains("https://")) {
                 books.add(new Book(barData[8], barData[6], barData[4].replace(" ", ""), barData[7], barData[3].replace(" ", ""), barData[18]));
             } else books.add(new Book(barData[8], barData[6], barData[4].replace(" ", ""), barData[7], barData[3].replace(" ", ""), barData[19]));
+            if(barData[4] != null)
+            bookReviewsRepository.save(new BookReviews(barData[4].replace(" ", "")));
         }
         this.bookRepository.saveAll(books);
 
@@ -57,8 +64,15 @@ public class DataHolder {
             this.ratingRepository.save(new Rating(i));
         }
 
-        this.userRepository.save(new User("proba", "proba", "proba", "aa@gmail.com", Date.valueOf(LocalDate.now()), Role.ROLE_USER, passwordEncoder.encode("proba")));
+        this.userRepository.save(new User("angela", "s", "stev", "ss@gmail.com", Date.valueOf(LocalDate.now()), Role.ROLE_USER, passwordEncoder.encode("stev")));
+        this.userRepository.save(new User("angela", "j", "jan", "jj@gmail.com", Date.valueOf(LocalDate.now()), Role.ROLE_PREMIUM, passwordEncoder.encode("jan")));
+
         this.userRepository.save(new User("admin", "admin", "admin", "admin@gmail.com", Date.valueOf(LocalDate.now()), Role.ROLE_ADMIN, passwordEncoder.encode("admin")));
+        this.bookReviewsService.addReviewToBook("439023483", this.ratingRepository.findByRating(1).getRating());
+        this.bookReviewsService.addReviewToBook("439023483", this.ratingRepository.findByRating(5).getRating());
+        this.bookReviewsService.addReviewToBook("439023483", this.ratingRepository.findByRating(5).getRating());
+        this.bookReviewsService.addReviewToBook("439023483", this.ratingRepository.findByRating(4).getRating());
+
 
     }
 }

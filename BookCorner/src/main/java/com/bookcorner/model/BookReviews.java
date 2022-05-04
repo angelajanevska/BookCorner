@@ -14,7 +14,9 @@ public class BookReviews {
     private Long id;
     private String ISBN;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "review")
+
     private List<Rating> reviews;
 
     public BookReviews(String ISBN) {

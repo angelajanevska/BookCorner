@@ -109,13 +109,13 @@
                         <a th:href="@{/profile}">Profile</a>
                     </li>
                     <li class="nav-item" sec:authorize="!isAuthenticated()">
-                        <a th:href="@{/login}" >Log in</a>
+                        <a type="button" class="btn btn-main" th:href="@{/login}" >Log in</a>
                     </li>
                     <li class="nav-item" sec:authorize="!isAuthenticated()">
-                        <a th:href="@{/register}">Register</a>
+                        <a type="button" class="btn btn-main" th:href="@{/register}">Register</a>
                     </li>
                     <li class="nav-item" sec:authorize="isAuthenticated()">
-                        <a th:href="@{/logout}">Log out</a>
+                        <a type="button" class="btn btn-main" th:href="@{/logout}">Log out</a>
                     </li>
                 </ul>
                 <!-- Left links -->
@@ -137,15 +137,16 @@
               <!--Book gallery item-->
               <div class="col-md-12 col-sm-6 col-xs-12 book-item">
                   <div class="d-flex justify-content-center">
-                      <img class="popular-image" th:src="@{/images/portfolio/portfolio-img1.jpg}" alt="Portfolio">
+                      <img class="popular-image" th:src="${topBook.getCoverURL()}" alt="Top rated">
                       <div class="popular-item">
-                          <a href="books-single.html"><h1>Book title</h1></a>
-                          <h3><i>Most popular book at the moment..</i></h3><br><br>
-                          <p class="book-subtitle">Book author</p>
+                          <a href="books-single.html" th:text="${topBook.getTitle()}"><h1></h1></a>
+                          <h3><i>Top rated book at the moment..</i></h3><br><br>
+                          <p class="book-subtitle" th:text="${topBook.getAuthor()}"></p>
                           <p class="book-subtitle">Book genre</p>
                           <p class="book-description">Book description Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><br>
-                          <button class="btn btn-secondary">Learn more</button>
-                      </div>
+                          <form th:action="@{'book-wishlist/{isbn}' (isbn=${topBook.getIsbn()})}" th:method="POST">
+                              <button class="btn btn-main" >Add to wishlist</button>
+                          </form>                      </div>
                   </div>
               </div>
           </div>

@@ -18,4 +18,6 @@ public interface BookService {
 
     Optional<Book> findByIsbn(String isbn);
 
+    Book highestRated();
+
 }
