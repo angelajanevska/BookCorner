@@ -22,8 +22,8 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public void save(String title, String author, String isbn, String release_date, String pages, String coverURL) {
-        Book book = new Book(title, author, isbn, release_date, pages, coverURL);
+    public void save(String title, String author, String isbn, String selfID, String description, String release_date, String pages, String coverURL) {
+        Book book = new Book(title, author, isbn, selfID,description, release_date, pages, coverURL);
         this.bookRepository.save(book);
     }
 
@@ -45,6 +45,11 @@ public class BookServiceImpl implements BookService {
     @Override
     public Optional<Book> findByIsbn(String isbn) {
         return this.bookRepository.findByIsbn(isbn);
+    }
+
+    @Override
+    public Optional<Book> findBySelfID(String selfID) {
+        return this.bookRepository.findBySelfID(selfID);
     }
 
     @Override

@@ -32,9 +32,43 @@ public class SingleBookController {
         }
         return "redirect:/book?error=bookNotFound";
     }
+
+    @GetMapping("/single/{bookID}")
+    public String getBookByID(@PathVariable String bookID, Model model){
+        model.addAttribute("bookID",bookID);
+        model.addAttribute("ratings", ratingService.findAll());
+        return "books-single";
+    }
+
     @PostMapping("/addRating/{isbn}")
     public String addRating(@PathVariable String isbn, @RequestParam String rate){
         this.bookReviewsService.addReviewToBook(isbn, Integer.parseInt(rate));
         return "redirect:/book/{isbn}";
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

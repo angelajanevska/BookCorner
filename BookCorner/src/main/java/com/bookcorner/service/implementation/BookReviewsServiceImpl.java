@@ -48,13 +48,14 @@ public class BookReviewsServiceImpl implements BookReviewsService {
 
     @Override
     public Double getRating(String isbn) {
-        BookReviews review = this.bookReviewsRepository.findByISBN(isbn);
-        Double sum = 0.0;
-        Integer count = review.getReviews().size();
-        for (Rating rating : review.getReviews()) {
-            sum += rating.getRating();
-        }
-        DecimalFormat df = new DecimalFormat("0.00");
-        return Double.parseDouble(df.format(sum / count));
+//        BookReviews review = this.bookReviewsRepository.findByISBN(isbn);
+//        Double sum = 0.0;
+//        Integer count = review.getReviews().size();
+//        for (Rating rating : review.getReviews()) {
+//            sum += rating.getRating();
+//        }
+//        DecimalFormat df = new DecimalFormat("0.00");
+//        return Double.parseDouble(df.format(sum / count));
+        return 1.1;
     }
 }

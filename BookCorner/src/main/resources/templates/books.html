@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
+<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -140,7 +140,7 @@
               <!--Book gallery item-->
               <div class="col-md-12 col-sm-6 col-xs-12 book-item">
                   <div class="d-flex justify-content-center">
-                      <img class="popular-image" th:src="${topBook.getCoverURL()}" alt="Top rated">
+                      <img class="popular-image" width="400px" th:src="${topBook.getCoverURL()}" alt="Top rated">
                       <div class="popular-item">
                           <a href="books-single.html" th:text="${topBook.getTitle()}"><h1></h1></a>
                           <h3><i>Top rated book at the moment..</i></h3><br><br>
@@ -153,55 +153,28 @@
                   </div>
               </div>
           </div>
-          <div class="title text-center"><br>
-                  <div class="text-center"><h3><b>- Look for books -</b></h3><h3><i>A room without books is like a body without a soul.</i></h3></div>
-              </div><br><br>
-          <div class="protfolio-mixitup-btn">
-              <!--Book filter-->
-              <form id="filter" th:method="get" th:action="@{/}">
-                  <div class="filter btn btn-default btn-main">all</div>
-                  <div class="filter btn btn-default btn-main">Most popular</div>
-                  <label for="genre"></label>
-                  <select id="genre" name="genre" class="filter btn btn-default btn-main">
-                      <option value="" disabled selected hidden>Filter by genre</option>
-                      <option value="action">action</option>
-                      <option value="adventure">adventure</option>
-                      <option value="fiction">fiction</option>
-                      <option value="romance">romance</option>
-                      <option value="history">history</option>
-                      <option value="children">children's literature</option>
-                      <option value="education">education</option>
-                  </select>
-                  <label for="search-by"></label>
-                  <select id="search-by" name="search-by" class="filter btn btn-default btn-main">
-                      <option value="" disabled selected hidden>Select keyword</option>
-                      <option value="author">Author</option>
-                      <option value="isbn">ISBN</option>
-                      <option value="title">Title</option>
-                  </select>
-                  <input type="search" class="filter btn btn-default btn-main active">
-                  <button type="submit" class="filter btn btn-default btn-main active">Search</button>
-              </form>
+<!--          <div class="title text-center"><br>-->
+<!--                  <div class="text-center"><h3><b>- Look for books -</b></h3><h3><i>A room without books is like a body without a soul.</i></h3></div>-->
+<!--              </div>-->
+          <br><br>
+
+          <div class="protfolio-mixitup-btn text-center">
+              <div class="title"> <h3>Find your next book by its author or title...</h3><p>Ex. Stephen King</p></div>
+              <input id="search" class="filter btn btn-default btn-main" placeholder="Search for an author or title" style="width: 400px !important;">
+              &nbsp;
+              <button id="button" class="filter btn btn-default btn-main active" type="button">Search</button>
+              <div id="result" class="d-flex row justify-content-center"></div>
+          </div>
+
+          <div class="protfolio-mixitup-btn text-center">
+              <div class="title"> <h3>... Or search books by your desired genre</h3><p>Ex. Fantasy</p></div>
+              <input id="searchSubject" class="filter btn btn-default btn-main" placeholder="Search by genre" style="width: 400px !important;">
+              &nbsp;
+              <button id="buttonSubject" class="filter btn btn-default btn-main active" type="button">Search</button>
           </div>
           <br>
-          <div class="row d-flex justify-content-center">
-              <!--Book gallery item-->
-              <div th:each="book : ${books}" class="col-md-2 col-sm-6 col-xs-12 book-item">
-                  <img class="book-image" th:src="${book.getCoverURL()}" >
-                  <div>
-<!--                      <form th:action="@{'book/{isbn}' (isbn=${book.getIsbn()})}" th:method="POST">-->
-<!--                          <button class="btn btn-main" >Add to wishlist</button>-->
-                      <a  th:href="@{'book/{isbn}' (isbn=${book.getIsbn()})}" th:method="GET"><h3 th:text="${book.title}"></h3></a>
-<!--                      </form>-->
-                      <p class="" th:text="${book.author}"></p>
-                      <p class="">Book genre</p>
-                      <form th:action="@{'book-wishlist/{isbn}' (isbn=${book.getIsbn()})}" th:method="POST">
-                          <button class="btn btn-main" >Add to wishlist</button>
-                      </form>
-                  </div>
-              </div>
-          </div>
-          <br><br><div class="title"><br></div><br><br>
+          <div id="resultSubject" class="row d-flex justify-content-center"></div>
+
           <!--Popular author-->
           <div class="row">
               <!--Author item-->
@@ -306,6 +279,11 @@
     <script th:src="@{/plugins/jquery.vide.js}"></script>
 
     <script th:src="@{/js/script.js}"></script>
+
+<!--    api call script-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script th:src="@{/js/api.js}"></script>
+
     </body>
 
     </html>

@@ -53,12 +53,14 @@ public class DataHolder {
         while ((row = bookReader.readNext()) != null) {
             String[] barData = Arrays.toString(row).split(",");
             if(barData[18].contains("https://")) {
-                books.add(new Book(barData[8], barData[6], barData[4].replace(" ", ""), barData[7], barData[3].replace(" ", ""), barData[18]));
-            } else books.add(new Book(barData[8], barData[6], barData[4].replace(" ", ""), barData[7], barData[3].replace(" ", ""), barData[19]));
+                books.add(new Book(barData[8], barData[6], barData[4].replace(" ", ""), "selfID","description",barData[7], barData[3].replace(" ", ""), barData[18]));
+            } else books.add(new Book(barData[8], barData[6], barData[4].replace(" ", ""), "selfID","description", barData[7], barData[3].replace(" ", ""), barData[19]));
             if(barData[4] != null)
             bookReviewsRepository.save(new BookReviews(barData[4].replace(" ", "")));
         }
         this.bookRepository.saveAll(books);
+
+
 
         for(int i = 1; i <= 5; i++){
             this.ratingRepository.save(new Rating(i));
@@ -72,7 +74,6 @@ public class DataHolder {
         this.bookReviewsService.addReviewToBook("439023483", this.ratingRepository.findByRating(5).getRating());
         this.bookReviewsService.addReviewToBook("439023483", this.ratingRepository.findByRating(5).getRating());
         this.bookReviewsService.addReviewToBook("439023483", this.ratingRepository.findByRating(4).getRating());
-
 
     }
 }
