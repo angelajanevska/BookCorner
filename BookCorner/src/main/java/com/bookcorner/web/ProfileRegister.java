@@ -4,10 +4,11 @@ import com.bookcorner.model.Book;
 import com.bookcorner.model.BookStatus;
 import com.bookcorner.model.PersonalBooks;
 import com.bookcorner.model.User;
-import com.bookcorner.repository.UserRepository;
 import com.bookcorner.service.BookService;
+import com.bookcorner.service.EmailSenderService;
 import com.bookcorner.service.PersonalBooksService;
 import com.bookcorner.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Controller
@@ -24,11 +24,14 @@ public class ProfileRegister {
     private final PersonalBooksService personalBooksService;
     private final BookService bookService;
     private final UserService userService;
+    @Autowired
+    private final EmailSenderService emailSenderService;
 
-    public ProfileRegister(PersonalBooksService personalBooksService, BookService bookService, UserService userService) {
+    public ProfileRegister(PersonalBooksService personalBooksService, BookService bookService, UserService userService, EmailSenderService emailSenderService) {
         this.personalBooksService = personalBooksService;
         this.bookService = bookService;
         this.userService = userService;
+        this.emailSenderService = emailSenderService;
     }
 
     @GetMapping
@@ -47,8 +50,8 @@ public class ProfileRegister {
         model.addAttribute("wishlist", wishlist);
         model.addAttribute("currentlyReading", currentlyReading);
         model.addAttribute("readBooks", readBooks);
-        model.addAttribute("user",request.getRemoteUser());
-        model.addAttribute("stats", this.userService.findByMonthOfSpecificYear(2022));
+        model.addAttribute("user", user);
+        model.addAttribute("stats", this.userService.findByMonthOfSpecificYear(LocalDate.now().getYear()));
         return "profile";
     }
 
@@ -67,6 +70,12 @@ public class ProfileRegister {
     @DeleteMapping("/delete/{isbn}")
     public String deleteFromWishlist(@PathVariable String isbn){
         this.personalBooksService.deleteFromWishlist(isbn);
+        return "redirect:/profile";
+    }
+
+    @PostMapping("/sendMail")
+    public String sendMail(HttpServletRequest request){
+        this.emailSenderService.sendEmail(request.getRemoteUser());
         return "redirect:/profile";
     }
 

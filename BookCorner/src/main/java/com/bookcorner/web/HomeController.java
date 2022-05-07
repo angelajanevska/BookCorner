@@ -5,27 +5,23 @@ import com.bookcorner.model.User;
 import com.bookcorner.service.BookService;
 import com.bookcorner.service.EmailSenderService;
 import com.bookcorner.service.PersonalBooksService;
-import com.bookcorner.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+
 @Controller
 @RequestMapping("/")
 public class HomeController {
     private final BookService bookService;
     private final PersonalBooksService personalBooksService;
-    private final UserService userService;
-    @Autowired
-    private final EmailSenderService emailSenderService;
 
-    public HomeController(BookService bookService, PersonalBooksService personalBooksService, UserService userService, EmailSenderService emailSenderService) {
+
+    public HomeController(BookService bookService, PersonalBooksService personalBooksService) {
         this.bookService = bookService;
         this.personalBooksService = personalBooksService;
-        this.userService = userService;
-        this.emailSenderService = emailSenderService;
     }
 
     @GetMapping
@@ -57,9 +53,4 @@ public class HomeController {
         return "contact";
     }
 
-    @PostMapping("/sendMail")
-    public String sendMail(@RequestParam String email, @RequestParam String subject, @RequestParam String mailMessage){
-        this.emailSenderService.sendEmail(email, subject, mailMessage);
-        return "redirect:/";
-    }
 }

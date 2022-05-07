@@ -66,8 +66,8 @@ public class DataHolder {
             this.ratingRepository.save(new Rating(i));
         }
 
-        this.userRepository.save(new User("angela", "s", "stev", "ss@gmail.com", Date.valueOf(LocalDate.now()), Role.ROLE_USER, passwordEncoder.encode("stev")));
-        this.userRepository.save(new User("angela", "j", "jan", "jj@gmail.com", Date.valueOf(LocalDate.now()), Role.ROLE_PREMIUM, passwordEncoder.encode("jan")));
+        this.userRepository.save(new User("angela", "s", "stev", "angela.stevkovska3@gmail.com", Date.valueOf(LocalDate.now()), Role.ROLE_USER, passwordEncoder.encode("stev")));
+        this.userRepository.save(new User("angela", "j", "jan", "angelajanevska01@gmail.com", Date.valueOf(LocalDate.now()), Role.ROLE_PREMIUM, passwordEncoder.encode("jan")));
 
         this.userRepository.save(new User("admin", "admin", "admin", "admin@gmail.com", Date.valueOf(LocalDate.now()), Role.ROLE_ADMIN, passwordEncoder.encode("admin")));
         this.bookReviewsService.addReviewToBook("439023483", this.ratingRepository.findByRating(1).getRating());

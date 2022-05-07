@@ -39,6 +39,6 @@ public class PersonalBooks {
         this.user = user;
         this.current_page = current_page;
         this.favoriteQuotes = favoriteQuotes;
-        this.finishedBookDate = null;
+        this.finishedBookDate = LocalDate.now();
     }
 }

@@ -28,8 +28,10 @@ public class PersonalBooksServiceImpl implements PersonalBooksService {
 
     @Override
     public PersonalBooks save(String isbn, BookStatus status, User user, Integer current_page, List<Quotes> favorite_quotes) {
-        PersonalBooks personalBooks = new PersonalBooks(isbn, status, user, current_page, favorite_quotes);
-        return this.personalBooksRepository.save(personalBooks);
+        PersonalBooks personalBook = new PersonalBooks(isbn, status, user, current_page, favorite_quotes);
+        if(personalBooksRepository.findByISBN(personalBook.getISBN()).isPresent())
+            return null;
+        return this.personalBooksRepository.save(personalBook);
     }
 
     @Override

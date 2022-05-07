@@ -61,7 +61,7 @@ public class UserServiceImpl implements UserService {
         List<PersonalBooks> readBooks = this.personalBooksRepository.findAll().stream().filter(el -> el.getStatus().equals(BookStatus.readBook)).collect(Collectors.toList());
         Integer[] listByMonth = new Integer[12];
         for(int i = 0; i < 12; i++){
-            int monthIndex = i;
+            int monthIndex = i+1;
             listByMonth[i] = Math.toIntExact(readBooks.stream().filter(el -> el.getFinishedBookDate().getMonthValue() == monthIndex).count());
         }
         return listByMonth;
